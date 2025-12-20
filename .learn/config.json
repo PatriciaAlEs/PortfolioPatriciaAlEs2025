@@ -66,6 +66,11 @@
             "graded": false,
             "files": [
                 {
+                    "path": "api/.env",
+                    "name": ".env",
+                    "hidden": true
+                },
+                {
                     "path": "api/app.py",
                     "name": "app.py",
                     "hidden": false
@@ -1596,5 +1601,5 @@
     "bugsLink": null,
     "videoSolutions": false,
     "localhostOnly": false,
-    "session": 2281295345710239200
+    "session": 8214970377128250000
 }

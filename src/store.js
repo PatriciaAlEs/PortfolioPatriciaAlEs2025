@@ -7,7 +7,7 @@ export const initialStore = {
   user: JSON.parse(localStorage.getItem("user") || "null"),
   techs: [],
   projects: [],
-  ui: { cvOpen: false, authOpen: false, authMode: "register", projectOpen: null, contactOpen: false }
+  ui: { cvOpen: false, authOpen: false, authMode: "register", projectOpen: null }
 };
 
 export function storeReducer(state, action) {
@@ -20,8 +20,6 @@ export function storeReducer(state, action) {
     case "closeAuth": return { ...state, ui: { ...state.ui, authOpen: false } };
     case "openProject": return { ...state, ui: { ...state.ui, projectOpen: action.payload } };
     case "closeProject": return { ...state, ui: { ...state.ui, projectOpen: null } };
-    case "openContact": return { ...state, ui: { ...state.ui, contactOpen: true } };
-    case "closeContact": return { ...state, ui: { ...state.ui, contactOpen: false } };
     case "login":
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("user", JSON.stringify(action.payload.user));

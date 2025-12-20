@@ -26,21 +26,9 @@ with app.app_context():
     db.session.add_all(techs)
 
     # --- Proyectos ---
-    portfolio = Project(
-        title="Mi Portfolio",
-        short_desc="Portfolio personal con React y Flask",
-        long_desc="Un sitio web responsive con autenticación JWT, base de datos en SQLAlchemy y diseño en Bootstrap.",
-        cover_url="https://via.placeholder.com/600x300.png?text=Portfolio",
-        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
-    )
-    portfolio.images = [
-        ProjectImage(url="https://via.placeholder.com/400x200.png?text=Portfolio+1"),
-        ProjectImage(url="https://via.placeholder.com/400x200.png?text=Portfolio+2")
-    ]
-
     habit_tracker = Project(
         title="Habit Tracker",
-        short_desc="App para seguimiento de hábitos",
+        short_desc="Aplicación web intuitiva para el seguimiento y gestión de hábitos diarios. Permite crear, monitorear y mantener hábitos saludables con visualización de progreso y estadísticas personalizadas.",
         long_desc="Aplicación React para registrar hábitos diarios, con persistencia en LocalStorage.",
         cover_url="http://127.0.0.1:5000/static/img/habit_tracker.jpeg",
         video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -48,13 +36,29 @@ with app.app_context():
 
     hooboo = Project(
         title="Hooboo",
-        short_desc="Plataforma social ficticia",
+        short_desc="Red social interactiva para amantes de la lectura. Conecta lectores y escritores, permite compartir reseñas, descubrir nuevos libros y participar en una comunidad literaria vibrante con sistema de calificaciones y comentarios.",
         long_desc="Proyecto colaborativo con autenticación, publicaciones y comentarios.",
         cover_url="http://127.0.0.1:5000/static/img/HooBoo.png",
         video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
     )
 
-    db.session.add_all([portfolio, habit_tracker, hooboo])
+    namegen = Project(
+        title="NameGen",
+        short_desc="Herramienta creativa para generar nombres únicos y originales. Ideal para proyectos, personajes, empresas o marcas. Ofrece múltiples categorías, filtros personalizables y opciones de búsqueda avanzada para encontrar el nombre perfecto.",
+        long_desc="Aplicación para generar nombres aleatorios con diferentes opciones y filtros.",
+        cover_url="http://127.0.0.1:5000/static/img/NameGen.png",
+        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    )
+
+    portfolio = Project(
+        title="Portfolio",
+        short_desc="Portfolio web profesional y moderno que presenta mis proyectos más destacados, stack tecnológico y experiencia como desarrolladora. Diseño responsive con React en el frontend y Flask en el backend, incluyendo sistema de autenticación y gestión de contenido.",
+        long_desc="Sitio web personal mostrando mis proyectos, habilidades y experiencia profesional.",
+        cover_url="http://127.0.0.1:5000/static/img/portfolio.png",
+        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    )
+
+    db.session.add_all([habit_tracker, hooboo, namegen, portfolio])
     db.session.commit()
 
     print("✅ Base de datos poblada con tecnologías y proyectos")

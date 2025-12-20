@@ -57,20 +57,3 @@ class ProjectImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(255))
     project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
-
-
-class ContactMessage(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(120), nullable=False)
-    user_email = db.Column(db.String(120), nullable=False)
-    subject = db.Column(db.String(255), nullable=False)
-    message = db.Column(db.Text, nullable=False)
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "user_name": self.user_name,
-            "user_email": self.user_email,
-            "subject": self.subject,
-            "message": self.message,
-        }

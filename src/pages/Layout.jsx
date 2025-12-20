@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import AuthModal from "../components/AuthModal.jsx";
-import ContactModal from "../components/ContactModal.jsx";
 
 export const Layout = () => {
   return (
@@ -13,7 +12,6 @@ export const Layout = () => {
       </main>
       <Footer />
       <AuthModal />
-      <ContactModal />
     </>
   );
 };

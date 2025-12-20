@@ -9,14 +9,23 @@ export default function ProjectsSection() {
   useEffect(() => { actions.loadProjects(); }, []);
 
   return (
-    <section id="proyectos" className="section projects-wrap my-12">
+    <section id="proyectos" className="section projects-wrap py-20">
       <div className="container-narrow">
-        <h2 className="section-title mb-8">PROYECTOS</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {/* Título principal con más protagonismo */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-black text-green-dark mb-4 relative inline-block">
+            PROYECTOS
+            <div className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-green-hero via-green-dark to-green-hero rounded-full shadow-lg"></div>
+          </h2>
+          <p className="text-ink text-lg mt-6 max-w-2xl mx-auto font-bold">
+            Explora algunos de los proyectos que he desarrollado
+          </p>
+        </div>
+
+        {/* Grid de proyectos */}
+        <div className="flex flex-col gap-8">
           {store.projects.map(p => (
-            <div key={p.id} className="flex">
-              <ProjectCard project={p} />
-            </div>
+            <ProjectCard key={p.id} project={p} />
           ))}
         </div>
       </div>
