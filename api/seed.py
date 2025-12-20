@@ -31,7 +31,8 @@ with app.app_context():
         short_desc="Aplicación web intuitiva para el seguimiento y gestión de hábitos diarios. Permite crear, monitorear y mantener hábitos saludables con visualización de progreso y estadísticas personalizadas.",
         long_desc="Aplicación React para registrar hábitos diarios, con persistencia en LocalStorage.",
         cover_url="http://127.0.0.1:5000/static/img/habit_tracker.jpeg",
-        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
+        repo_url="https://github.com/PatriciaAlEs/habit-tracker"
     )
 
     hooboo = Project(
@@ -39,7 +40,8 @@ with app.app_context():
         short_desc="Red social interactiva para amantes de la lectura. Conecta lectores y escritores, permite compartir reseñas, descubrir nuevos libros y participar en una comunidad literaria vibrante con sistema de calificaciones y comentarios.",
         long_desc="Proyecto colaborativo con autenticación, publicaciones y comentarios.",
         cover_url="http://127.0.0.1:5000/static/img/HooBoo.png",
-        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
+        repo_url="https://github.com/PatriciaAlEs/hooboo"
     )
 
     namegen = Project(
@@ -47,7 +49,8 @@ with app.app_context():
         short_desc="Herramienta creativa para generar nombres únicos y originales. Ideal para proyectos, personajes, empresas o marcas. Ofrece múltiples categorías, filtros personalizables y opciones de búsqueda avanzada para encontrar el nombre perfecto.",
         long_desc="Aplicación para generar nombres aleatorios con diferentes opciones y filtros.",
         cover_url="http://127.0.0.1:5000/static/img/NameGen.png",
-        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
+        repo_url="https://github.com/PatriciaAlEs/PatriciaAlEs-generador-nombres"
     )
 
     portfolio = Project(
@@ -55,7 +58,8 @@ with app.app_context():
         short_desc="Portfolio web profesional y moderno que presenta mis proyectos más destacados, stack tecnológico y experiencia como desarrolladora. Diseño responsive con React en el frontend y Flask en el backend, incluyendo sistema de autenticación y gestión de contenido.",
         long_desc="Sitio web personal mostrando mis proyectos, habilidades y experiencia profesional.",
         cover_url="http://127.0.0.1:5000/static/img/portfolio.png",
-        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
+        repo_url="https://github.com/PatriciaAlEs/mi-nuevo-portfolio"
     )
 
     db.session.add_all([habit_tracker, hooboo, namegen, portfolio])

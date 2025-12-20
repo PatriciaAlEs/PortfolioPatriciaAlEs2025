@@ -43,6 +43,7 @@ class Project(db.Model):
     long_desc = db.Column(db.Text)
     cover_url = db.Column(db.String(255))
     video_url = db.Column(db.String(255))
+    repo_url = db.Column(db.String(255))
     images = db.relationship("ProjectImage", backref="project", cascade="all,delete")
     
     def serialize(self):
@@ -50,6 +51,7 @@ class Project(db.Model):
             "id": self.id, "title": self.title,
             "short_desc": self.short_desc, "long_desc": self.long_desc,
             "cover_url": self.cover_url, "video_url": self.video_url,
+            "repo_url": self.repo_url,
             "images": [i.url for i in self.images]
         }
 

@@ -5,14 +5,14 @@ const AboutMe = () => {
         <section id="sobre-mi" className="split my-4">
             <div className="row g-0">
 
-                {/* Lado verde con título */}
+
                 <div className="col-12 col-lg-5 left d-flex align-items-center">
                     <div className="box w-100">
                         <h2 className="section-title text-white m-0">SOBRE MÍ</h2>
                     </div>
                 </div>
 
-                {/* Lado rosa con descripción */}
+
                 <div className="col-12 col-lg-7 right">
                     <div className="box">
                         <p className="mb-2">

@@ -21,14 +21,19 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-mauve py-3 px-4 sticky top-0 z-50 backdrop-blur-sm bg-mauve/90">
+    <nav className="bg-mauve py-3 px-4 sticky top-0 z-50 backdrop-blur-sm bg-mauve/90 shadow-md">
       <div className="container-narrow flex items-center justify-between">
 
         {/* Brand */}
-        <a className="text-ink font-black text-xl uppercase tracking-wide hover:text-green-dark transition-colors duration-200 no-underline"
+        <a className="group relative text-ink font-black text-2xl md:text-3xl tracking-tight hover:text-green-dark transition-all duration-300 no-underline"
+          style={{ fontFamily: "'Playfair Display', serif" }}
           href="#"
           onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-          Patricia Álvarez
+          <span className="relative z-10">
+            Patricia <span className="text-green-dark">Álvarez</span>
+          </span>
+          <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-dark to-pink-light group-hover:w-full transition-all duration-500"></div>
+          <div className="absolute -inset-2 bg-pink-light/20 rounded-lg opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300 -z-10"></div>
         </a>
 
         {/* Links / acciones */}
