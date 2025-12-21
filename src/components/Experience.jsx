@@ -12,7 +12,7 @@ const Experience = () => {
                         </div>
                         <div className="text-sm text-gray-500 mb-4 font-medium">2024 — actual</div>
                         <p className="text-gray-700 leading-relaxed">
-                            Acompaño a estudiantes en su camino como desarrolladores, resolviendo dudas en mentorías, guiando debugging en proyectos con React y Flask, y revisando código para asegurar buenas prácticas. También apoyo en despliegues y en la organización de las entregas.
+                            Ayudo a estudiantes que están aprendiendo a programar desde cero. Doy mentorías, resuelvo bugs que parecen imposibles (spoiler: siempre es un punto y coma), reviso código y les ayudo a desplegar sus proyectos. Lo mejor de todo: ver cómo pasan de "no entiendo nada" a "¡ya funciona!" 🚀
                         </p>
                     </div>
                     <div className="ex-card group">
@@ -21,7 +21,7 @@ const Experience = () => {
                         </div>
                         <div className="text-sm text-gray-500 mb-4 font-medium">2024 — actual</div>
                         <p className="text-gray-700 leading-relaxed">
-                            Desarrollo tiendas online con WordPress, WooCommerce y Elementor, adaptando el diseño a la identidad de cada cliente. Me encargo de la integración de pagos y envíos, personalización de plantillas y optimización de rendimiento (Core Web Vitals) para mejorar la experiencia de compra
+                            Creo tiendas online para clientes que necesitan vender sus productos en internet. Uso WordPress y WooCommerce (sí, a veces toca PHP 😅), configuro pasarelas de pago, optimizo velocidad y me aseguro de que todo se vea bien en móviles. Básicamente, que la gente pueda comprar sin frustrarse por el camino.
                         </p>
                     </div>
                 </div>

@@ -24,8 +24,8 @@ export default function ProjectsSection() {
 
         {/* Grid de proyectos */}
         <div className="flex flex-col gap-8">
-          {store.projects.map(p => (
-            <ProjectCard key={p.id} project={p} />
+          {store.projects.map((p, index) => (
+            <ProjectCard key={p.id} project={p} index={index} />
           ))}
         </div>
       </div>

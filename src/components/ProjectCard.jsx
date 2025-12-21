@@ -1,10 +1,32 @@
 // ProjectCard.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, index }) {
   const { dispatch } = useGlobalReducer();
   const [showImageModal, setShowImageModal] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  // Animación de entrada con Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Siempre animar cuando entra o sale del viewport
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px' // Trigger un poco antes de que salga
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Cerrar modal con tecla ESC
   useEffect(() => {
@@ -25,32 +47,26 @@ export default function ProjectCard({ project }) {
     };
   }, [showImageModal]);
 
-  const techIcons = {
-    "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    "Flask": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
-    "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-    "Bootstrap": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-    "HTML5": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-    "CSS3": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  };
+  // Usar las tecnologías que vienen del backend
+  const technologies = project.techs || [];
 
-  const projectTechs = {
-    "Habit Tracker": ["React", "JavaScript", "CSS3"],
-    "Hooboo": ["React", "Flask", "Python", "Bootstrap"],
-    "NameGen": ["JavaScript", "HTML5", "CSS3"],
-    "Portfolio": ["React", "Flask", "Python", "Bootstrap"]
-  };
-
-  const technologies = projectTechs[project.title] || [];
+  // Determinar dirección de animación (alternando izquierda/derecha)
+  const animationDirection = index % 2 === 0 ? 'left' : 'right';
+  const animationClass = isVisible
+    ? 'opacity-100 translate-x-0'
+    : `opacity-0 ${animationDirection === 'left' ? '-translate-x-32' : 'translate-x-32'}`;
 
   return (
     <>
-      <div className="bg-white rounded-3xl overflow-hidden shadow-project hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border-2 border-green-dark/20 hover:border-green-dark">
+      <div
+        ref={cardRef}
+        className={`bg-white rounded-3xl overflow-hidden shadow-project hover:shadow-xl transition-all duration-1000 ease-out transform hover:-translate-y-2 border-2 border-green-dark/20 hover:border-green-dark ${animationClass}`}
+        style={{ transitionProperty: 'all' }}
+      >
         <div className="flex flex-col md:flex-row">
           {/* Imagen a la izquierda */}
           <div
-            className="md:w-2/5 relative overflow-hidden cursor-pointer group"
+            className="md:w-2/5 relative overflow-hidden cursor-pointer group h-64 sm:h-80 md:h-full"
             onClick={(e) => {
               e.stopPropagation();
               setShowImageModal(true);
@@ -58,12 +74,12 @@ export default function ProjectCard({ project }) {
           >
             <img
               src={project.cover_url}
-              className="w-full h-72 md:h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               alt={project.title}
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-green-dark/70 to-green-hero/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="bg-pink-light/40 backdrop-blur-sm rounded-full p-4 shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="bg-pink-light/40 backdrop-blur-sm rounded-full p-3 sm:p-4 shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-12 sm:w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                 </svg>
               </div>
@@ -75,19 +91,19 @@ export default function ProjectCard({ project }) {
           </div>
 
           {/* Contenido a la derecha */}
-          <div className="md:w-3/5 p-8 flex flex-col justify-between bg-gradient-to-br from-pink-light/20 to-transparent">
+          <div className="md:w-3/5 p-4 sm:p-6 md:p-8 flex flex-col justify-between bg-gradient-to-br from-pink-light/20 to-transparent">
             {/* Título y descripción */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-1 h-8 bg-gradient-to-b from-green-dark to-green-hero rounded-full"></div>
-                <h3 className="text-3xl font-black text-ink hover:text-green-dark transition-colors duration-300">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-green-dark to-green-hero rounded-full"></div>
+                <h3 className="text-2xl sm:text-3xl font-black text-ink hover:text-green-dark transition-colors duration-300">
                   {project.title}
                 </h3>
               </div>
 
               {/* Descripción con diseño mejorado */}
-              <div className="bg-pink-light/30 p-4 rounded-xl shadow-sm mb-6 border-l-4 border-green-dark">
-                <p className="text-ink leading-relaxed text-base">
+              <div className="bg-pink-light/30 p-3 sm:p-4 rounded-xl shadow-sm mb-4 sm:mb-6 border-l-4 border-green-dark">
+                <p className="text-ink leading-relaxed text-sm sm:text-base">
                   {project.short_desc}
                 </p>
               </div>
@@ -95,25 +111,25 @@ export default function ProjectCard({ project }) {
 
             {/* Tecnologías con diseño mejorado */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 text-green-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
-                <h4 className="text-sm font-bold text-ink uppercase tracking-wider">Stack Tecnológico</h4>
+                <h4 className="text-xs sm:text-sm font-bold text-ink uppercase tracking-wider">Stack Tecnológico</h4>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {technologies.map((tech, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl hover:bg-green-dark hover:text-white transition-all duration-300 shadow-soft hover:shadow-lg border border-green-dark/20 hover:border-green-dark group/tech"
-                    title={tech}
+                    className="flex items-center gap-1.5 sm:gap-2 bg-white px-2 sm:px-4 py-1.5 sm:py-2.5 rounded-xl hover:bg-green-dark hover:text-white transition-all duration-300 shadow-soft hover:shadow-lg border border-green-dark/20 hover:border-green-dark group/tech"
+                    title={tech.name}
                   >
                     <img
-                      src={techIcons[tech]}
-                      alt={tech}
-                      className="w-6 h-6 group-hover/tech:scale-110 transition-transform duration-300"
+                      src={tech.icon_url}
+                      alt={tech.name}
+                      className="w-4 h-4 sm:w-6 sm:h-6 group-hover/tech:scale-110 transition-transform duration-300"
                     />
-                    <span className="text-sm font-semibold text-ink group-hover/tech:text-white transition-colors duration-300">{tech}</span>
+                    <span className="text-xs sm:text-sm font-semibold text-ink group-hover/tech:text-white transition-colors duration-300">{tech.name}</span>
                   </div>
                 ))}
               </div>

@@ -3,6 +3,12 @@ from datetime import datetime
 from flask_bcrypt import generate_password_hash, check_password_hash
 from extensions import db  # 👈 CAMBIO: antes era from app import db
 
+# Tabla de asociación many-to-many entre Project y Tech
+project_tech = db.Table('project_tech',
+    db.Column('project_id', db.Integer, db.ForeignKey('project.id'), primary_key=True),
+    db.Column('tech_id', db.Integer, db.ForeignKey('tech.id'), primary_key=True)
+)
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
@@ -45,6 +51,7 @@ class Project(db.Model):
     video_url = db.Column(db.String(255))
     repo_url = db.Column(db.String(255))
     images = db.relationship("ProjectImage", backref="project", cascade="all,delete")
+    techs = db.relationship("Tech", secondary=project_tech, backref="projects")
     
     def serialize(self):
         return {
@@ -52,7 +59,8 @@ class Project(db.Model):
             "short_desc": self.short_desc, "long_desc": self.long_desc,
             "cover_url": self.cover_url, "video_url": self.video_url,
             "repo_url": self.repo_url,
-            "images": [i.url for i in self.images]
+            "images": [i.url for i in self.images],
+            "techs": [t.serialize() for t in self.techs]
         }
 
 class ProjectImage(db.Model):
