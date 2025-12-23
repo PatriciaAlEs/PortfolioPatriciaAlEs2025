@@ -60,6 +60,7 @@ export default function ContactModal() {
     if (!store.ui?.contactOpen) {
         return null;
     }
+    
 
     return (
         <>
