@@ -10,5 +10,11 @@
   },
   "tempnpm-cache": {
     "us": "tempnpm-cache"
+  },
+  "dist": {
+    "us": "dist"
+  },
+  "public": {
+    "us": "public"
   }
 }

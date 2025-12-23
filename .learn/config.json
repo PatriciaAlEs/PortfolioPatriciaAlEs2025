@@ -125,6 +125,29 @@
         },
         {
             "position": 1,
+            "path": "dist",
+            "slug": "dist",
+            "translations": {},
+            "language": "html",
+            "entry": "dist/index.html",
+            "title": "dist",
+            "graded": false,
+            "files": [
+                {
+                    "path": "dist/assets",
+                    "name": "assets",
+                    "hidden": true
+                },
+                {
+                    "path": "dist/index.html",
+                    "name": "index.html",
+                    "hidden": false
+                }
+            ],
+            "done": false
+        },
+        {
+            "position": 2,
             "path": "node_modules",
             "slug": "node_modules",
             "translations": {},
@@ -371,6 +394,11 @@
                 {
                     "path": "node_modules/caniuse-lite",
                     "name": "caniuse-lite",
+                    "hidden": true
+                },
+                {
+                    "path": "node_modules/canvas-confetti",
+                    "name": "canvas-confetti",
                     "hidden": true
                 },
                 {
@@ -1507,7 +1535,30 @@
             "done": false
         },
         {
-            "position": 2,
+            "position": 3,
+            "path": "public",
+            "slug": "public",
+            "translations": {},
+            "language": null,
+            "entry": null,
+            "title": "public",
+            "graded": false,
+            "files": [
+                {
+                    "path": "public/favicon.svg",
+                    "name": "favicon.svg",
+                    "hidden": true
+                },
+                {
+                    "path": "public/icon.svg",
+                    "name": "icon.svg",
+                    "hidden": true
+                }
+            ],
+            "done": false
+        },
+        {
+            "position": 4,
             "path": "src",
             "slug": "src",
             "translations": {},
@@ -1570,7 +1621,7 @@
             "done": false
         },
         {
-            "position": 3,
+            "position": 5,
             "path": "tempnpm-cache",
             "slug": "tempnpm-cache",
             "translations": {},
@@ -1601,5 +1652,5 @@
     "bugsLink": null,
     "videoSolutions": false,
     "localhostOnly": false,
-    "session": 8214970377128250000
+    "session": 9795948554773492000
 }
