@@ -2,11 +2,15 @@
 # exit on error
 set -o errexit
 
+# Instalar dependencias de Node (para el frontend)
+npm install
+npm run build
+
 # Instalar dependencias de Python
 pip install --upgrade pip
 pip install -r api/requirements.txt
 pip install gunicorn psycopg2-binary
 
-# Crear las tablas en la base de datos
+# Crear las tablas y cargar datos de seed en la base de datos
 cd api
-python -c "from app import create_app; app = create_app(); app.app_context().push(); from extensions import db; db.create_all()"
+python seed.py

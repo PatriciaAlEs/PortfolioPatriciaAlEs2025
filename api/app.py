@@ -20,30 +20,33 @@ def create_app():
     db.init_app(app)     
     JWTManager(app)
 
-
     from models import User, Tech, Project, ProjectImage
     with app.app_context():
         db.create_all()
-
 
     from routes_auth import auth_bp
     from routes_public import pub_bp
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(pub_bp,   url_prefix="/api")
 
-    @app.get("/")
-    def root(): return {"ok": True}
-
-    # Servir el frontend desde la carpeta dist (para producción en Render)
+    # Servir archivos estáticos y el frontend desde dist
     @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
-    def serve_frontend(path):
-        if path != "" and os.path.exists(os.path.join("../dist", path)):
+    def serve(path):
+        # Si es una ruta de API, dejar que Flask la maneje normalmente
+        if path.startswith('auth/') or path.startswith('api/'):
+            return None
+        
+        # Si el archivo existe en dist, servirlo
+        dist_path = os.path.join("../dist", path)
+        if path != "" and os.path.isfile(dist_path):
             return send_from_directory("../dist", path)
-        else:
-            if os.path.exists("../dist/index.html"):
-                return send_from_directory("../dist", "index.html")
-            return {"error": "Frontend not found"}, 404
+        
+        # Para cualquier otra ruta, servir index.html (SPA)
+        if os.path.isfile("../dist/index.html"):
+            return send_from_directory("../dist", "index.html")
+        
+        return {"error": "Not found"}, 404
 
     return app
 
