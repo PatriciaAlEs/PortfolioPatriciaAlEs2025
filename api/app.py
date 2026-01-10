@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy  
 from flask_jwt_extended import JWTManager
@@ -33,6 +33,17 @@ def create_app():
 
     @app.get("/")
     def root(): return {"ok": True}
+
+    # Servir el frontend desde la carpeta dist (para producción en Render)
+    @app.route('/', defaults={'path': ''})
+    @app.route('/<path:path>')
+    def serve_frontend(path):
+        if path != "" and os.path.exists(os.path.join("../dist", path)):
+            return send_from_directory("../dist", path)
+        else:
+            if os.path.exists("../dist/index.html"):
+                return send_from_directory("../dist", "index.html")
+            return {"error": "Frontend not found"}, 404
 
     return app
 

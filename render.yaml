@@ -1,15 +1,17 @@
 services:
-  # Backend API (Flask)
+  # Backend API (Flask) que también sirve el frontend
   - type: web
     name: portfolio-api
     runtime: python
     region: oregon
     plan: free
-    buildCommand: "./build.sh"
+    buildCommand: "npm install && npm run build && pip install --upgrade pip && pip install -r api/requirements.txt && pip install gunicorn psycopg2-binary && cd api && python -c \"from app import create_app; app = create_app(); app.app_context().push(); from extensions import db; db.create_all()\""
     startCommand: "gunicorn --chdir api app:app"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
+      - key: NODE_VERSION
+        value: 20.0.0
       - key: DB_URL
         fromDatabase:
           name: portfolio-db
@@ -18,22 +20,6 @@ services:
         generateValue: true
       - key: FLASK_APP
         value: api/app.py
-    
-  # Frontend (React + Vite)
-  - type: web
-    name: portfolio-frontend
-    runtime: node
-    region: oregon
-    plan: free
-    buildCommand: "npm install && npm run build"
-    staticPublishPath: ./dist
-    envVars:
-      - key: NODE_VERSION
-        value: 20.0.0
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
 
 # Base de datos PostgreSQL
 databases:
