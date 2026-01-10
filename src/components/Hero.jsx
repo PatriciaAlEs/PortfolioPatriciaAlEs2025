@@ -73,7 +73,7 @@ export default function Hero() {
           <div className="order-1 lg:order-2 text-center">
             <img
               className="photo mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md animate-float"
-              src="src/assets/img/Patricia Alvarez.jpg"
+              src="/Patricia Alvarez.jpg"
               alt="Patricia Álvarez"
             />
           </div>

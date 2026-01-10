@@ -11,7 +11,7 @@ load_dotenv()
 from extensions import db  # 👈 usa la instancia común
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='static', static_url_path='/static')
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_URL","sqlite:///portfolio.db")
     app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET","change-me")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
