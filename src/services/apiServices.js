@@ -1,13 +1,16 @@
+import { staticTechs, staticProjects } from "../data/staticData";
+
 export const actions = (get, set) => ({
     async loadTechs() {
-        const r = await fetch(`${get().baseURL}/techs`);
-        const data = await r.json();
-        set({ type: "setTechs", payload: data });
+        set({ type: "setTechs", payload: staticTechs });
     },
     async loadProjects() {
-        const r = await fetch(`${get().baseURL}/projects`);
-        const data = await r.json();
-        set({ type: "setProjects", payload: data });
+        const projects = staticProjects.map(p => ({
+            ...p,
+            techs: staticTechs.filter(t => p.techKeys.includes(t.name)),
+            images: p.images || []
+        }));
+        set({ type: "setProjects", payload: projects });
     },
     async register({ name, email, password, kind }) {
         const baseURL = get().baseURL.replace('/api', '');
