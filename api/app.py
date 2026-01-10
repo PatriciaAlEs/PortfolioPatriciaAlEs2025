@@ -11,8 +11,8 @@ load_dotenv()
 
 
 def create_app():
-    # Resolver DATABASE_URL correctamente
-    db_url = os.getenv("DATABASE_URL", "sqlite:///portfolio.db")
+    # Resolver URL de base de datos desde diferentes nombres de entorno
+    db_url = os.getenv("DATABASE_URL") or os.getenv("DB_URL") or "sqlite:///portfolio.db"
     if db_url.startswith("postgres://"):
         db_url = db_url.replace("postgres://", "postgresql://", 1)
 

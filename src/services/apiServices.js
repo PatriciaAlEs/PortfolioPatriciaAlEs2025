@@ -13,8 +13,11 @@ export const actions = (get, set) => ({
         set({ type: "setProjects", payload: projects });
     },
     async register({ name, email, password, kind }) {
-        const baseURL = get().baseURL.replace('/api', '');
-        const r = await fetch(`${baseURL}/auth/signup`, {
+        const cfgUrl = import.meta.env.VITE_API_URL || get().baseURL;
+        const origin = (() => {
+            try { return new URL(cfgUrl).origin; } catch { return window.location.origin; }
+        })();
+        const r = await fetch(`${origin}/auth/signup`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, password, kind })
@@ -27,8 +30,11 @@ export const actions = (get, set) => ({
         set({ type: "login", payload: data });
     },
     async login({ email, password }) {
-        const baseURL = get().baseURL.replace('/api', '');
-        const r = await fetch(`${baseURL}/auth/login`, {
+        const cfgUrl = import.meta.env.VITE_API_URL || get().baseURL;
+        const origin = (() => {
+            try { return new URL(cfgUrl).origin; } catch { return window.location.origin; }
+        })();
+        const r = await fetch(`${origin}/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password })
