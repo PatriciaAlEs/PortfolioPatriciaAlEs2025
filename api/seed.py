@@ -30,7 +30,7 @@ with app.app_context():
         title="Habit Tracker",
         short_desc="Una app para trackear hábitos diarios que hice para aprender a gestionar estado en React sin librerías externas. El reto fue mantener todo sincronizado con LocalStorage y que no se perdiera nada al recargar. Afiancé React hooks, manejo de arrays y objetos, y persistencia de datos en el navegador.",
         long_desc="Mi primer proyecto 'serio' en React. Quería algo funcional que yo misma pudiera usar para seguir hábitos (porque post-its no me funcionaban 😅). El mayor desafío fue entender cómo actualizar el estado correctamente sin mutar arrays directamente y hacer que todo se guardara automáticamente en LocalStorage. Aprendí muchísimo sobre useEffect, useState y cómo React re-renderiza componentes.",
-        cover_url="/api/static/img/habit_tracker.jpeg",
+        cover_url="/static/img/habit_tracker.jpeg",
         video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
         repo_url="https://github.com/PatriciaAlEs/habit-tracker"
     )
@@ -39,7 +39,7 @@ with app.app_context():
         title="Hooboo",
         short_desc="Red social para lectores donde puedes buscar libros (con la API de Google Books), guardar favoritos, comentar y calificar. Proyecto en equipo que me hizo sudar con JWT, relaciones de base de datos y la coordinación entre frontend y backend. Fortaleció mi Flask, SQLAlchemy, autenticación y trabajo en equipo.",
         long_desc="Este fue un proyecto grupal bastante ambicioso: una red social de libros completa. Integramos la API de Google Books, montamos un sistema de autenticación con JWT (que al principio nos dio más dolores de cabeza de los esperados), y diseñamos la base de datos con relaciones entre usuarios, libros, comentarios y calificaciones. Lo más complicado fue sincronizar el trabajo del equipo y debuggear errores de CORS y tokens expirados. Pero salió adelante y aprendí un montón sobre arquitectura backend, APIs de terceros y cómo NO mergear código sin revisar primero 😂.",
-        cover_url="/api/static/img/HooBoo.png",
+        cover_url="/static/img/HooBoo.png",
         video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
         repo_url="https://github.com/PatriciaAlEs/hooboo"
     )
@@ -48,7 +48,7 @@ with app.app_context():
         title="NameGen",
         short_desc="Generador de nombres random para cuando no se te ocurre cómo llamar un proyecto, personaje o variable. Vanilla JavaScript puro, sin frameworks. El reto fue hacer que los filtros funcionaran bien y que la interfaz fuera simple pero bonita. Afiancé manipulación del DOM, eventos y lógica de arrays con JS puro.",
         long_desc="Un proyecto más sencillo pero súper útil. Lo hice en JavaScript vanilla porque quería practicar sin depender de React. La idea era generar nombres aleatorios aplicando filtros (longitud, letras iniciales, etc.). Lo más interesante fue optimizar la lógica para que fuera rápida y crear una UI limpia solo con CSS. Me ayudó a recordar que no siempre necesitas un framework para todo, y que dominar JavaScript básico es clave.",
-        cover_url="/api/static/img/NameGen.png",
+        cover_url="/static/img/NameGen.png",
         video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
         repo_url="https://github.com/PatriciaAlEs/PatriciaAlEs-generador-nombres"
     )
@@ -57,7 +57,7 @@ with app.app_context():
         title="PORTFOLIO",
         short_desc="Este portfolio que estás viendo ahora mismo 😊. Full-stack con React y Flask, sistema de autenticación para descargar mi CV, gestión de proyectos desde la base de datos y diseño responsive. El gran reto fue hacer que todo se viera bien, funcionara rápido y que el código quedara limpio. Consolidé todo mi stack: React, Flask, SQLAlchemy, JWT, TailwindCSS y deployment.",
         long_desc="El proyecto más personal. Quería un portfolio que no fuera solo 'bonito', sino funcional y que mostrara lo que sé hacer de verdad. Implementé autenticación (para que descarguen el CV solo si están registrados), un backend con Flask que sirve los proyectos desde una base de datos PostgreSQL, y un diseño con TailwindCSS que me encanta. Los mayores desafíos fueron optimizar el rendimiento, hacer el diseño responsive sin que se rompiera nada, y desplegar todo en producción sin que explotara. Aprendí deployment real, manejo de variables de entorno, CORS en producción y mucho sobre UX/UI.",
-        cover_url="/api/static/img/portfolio.png",
+        cover_url="/static/img/portfolio.png",
         video_url="https://www.youtube.com/embed/dQw4w9WgXcQ",
         repo_url="https://github.com/PatriciaAlEs/mi-nuevo-portfolio"
     )
