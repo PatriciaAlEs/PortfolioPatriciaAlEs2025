@@ -11,6 +11,10 @@ load_dotenv()
 from extensions import db  # 👈 usa la instancia común
 
 def create_app():
+    # Obtener ruta absoluta de la carpeta dist
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    DIST_DIR = os.path.join(BASE_DIR, 'dist')
+    
     app = Flask(__name__, static_folder='static', static_url_path='/static')
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_URL","sqlite:///portfolio.db")
     app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET","change-me")
@@ -34,19 +38,20 @@ def create_app():
     @app.route('/<path:path>')
     def serve(path):
         # Si es una ruta de API, dejar que Flask la maneje normalmente
-        if path.startswith('auth/') or path.startswith('api/'):
+        if path.startswith('auth/') or path.startswith('api/') or path.startswith('static/'):
             return None
         
         # Si el archivo existe en dist, servirlo
-        dist_path = os.path.join("../dist", path)
-        if path != "" and os.path.isfile(dist_path):
-            return send_from_directory("../dist", path)
+        file_path = os.path.join(DIST_DIR, path)
+        if path != "" and os.path.isfile(file_path):
+            return send_from_directory(DIST_DIR, path)
         
         # Para cualquier otra ruta, servir index.html (SPA)
-        if os.path.isfile("../dist/index.html"):
-            return send_from_directory("../dist", "index.html")
+        index_path = os.path.join(DIST_DIR, 'index.html')
+        if os.path.isfile(index_path):
+            return send_from_directory(DIST_DIR, 'index.html')
         
-        return {"error": "Not found"}, 404
+        return {"error": "Not found", "dist_dir": DIST_DIR, "exists": os.path.exists(DIST_DIR)}, 404
 
     return app
 

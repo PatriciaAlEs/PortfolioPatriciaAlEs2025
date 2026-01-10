@@ -12,3 +12,14 @@ def techs():
 def projects():
     data = [p.serialize() for p in Project.query.order_by(Project.id.desc()).all()]
     return jsonify(data), 200
+
+@pub_bp.get("/debug")
+def debug():
+    techs_count = Tech.query.count()
+    projects_count = Project.query.count()
+    return jsonify({
+        "techs_count": techs_count,
+        "projects_count": projects_count,
+        "techs": [t.name for t in Tech.query.all()],
+        "projects": [p.title for p in Project.query.all()]
+    }), 200
