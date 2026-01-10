@@ -15,6 +15,39 @@ export const staticTechs = [
 
 export const staticProjects = [
     {
+        id: 4,
+        title: "PORTFOLIO",
+        short_desc: "Portfolio personal construido con React y Vite como plantilla base para mostrar mis proyectos, habilidades y trayectoria profesional.",
+        long_desc: "Portfolio personal construido con React y Vite como plantilla base para mostrar mis proyectos, habilidades y trayectoria profesional. El proyecto está estructurado con una arquitectura escalable, estilos con TailwindCSS y preparado para añadir páginas, componentes y secciones personalizadas. Sirve como base sólida para desarrollar una web de presentación profesional con navegación, estilos modernos y fácil mantenimiento.",
+        cover_url: "/img/portfolio.png",
+        video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        repo_url: "https://github.com/PatriciaAlEs/mi-nuevo-portfolio",
+        techKeys: ["HTML5", "CSS3", "JavaScript", "React", "Python", "Flask", "SQLAlchemy", "PostgreSQL", "JWT", "Git", "GitHub"],
+        images: []
+    },
+    {
+        id: 3,
+        title: "NameGen",
+        short_desc: "Aplicación web full-stack con frontend en React y backend en Python/Flask que genera nombres aleatorios para distintos géneros de juegos (RPG, FPS, etc.). Incluye lógica de generación combinando listas de prefijos y sufijos por estilo, y una API REST que alimenta la interfaz de usuario con resultados personalizados.",
+        long_desc: "Aplicación web full-stack con frontend en React y backend en Python/Flask que genera nombres aleatorios para distintos géneros de juegos (RPG, FPS, etc.). Incluye lógica de generación combinando listas de prefijos y sufijos por estilo, y una API REST que alimenta la interfaz de usuario con resultados personalizados.",
+        cover_url: "/img/NameGen.png",
+        video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        repo_url: "https://github.com/PatriciaAlEs/PatriciaAlEs-generador-nombres",
+        techKeys: ["HTML5", "CSS3", "JavaScript"],
+        images: []
+    },
+    {
+        id: 2,
+        title: "Hooboo",
+        short_desc: "Aplicación web full-stack desarrollada en equipo como proyecto final. HooBoo funciona como una red social para lectores con búsquedas vía Google Books y biblioteca personal de favoritos.",
+        long_desc: "Aplicación web full-stack desarrollada en equipo como proyecto final. HooBoo funciona como una red social para lectores donde los usuarios pueden buscar libros usando la API de Google Books, crear una biblioteca personal de favoritos, escribir comentarios y valorar libros. Incluye autenticación con JWT, relaciones de base de datos (usuarios, libros, interacciones) y una arquitectura frontend-backend bien definida. El proyecto puso especial foco en la comunicación entre capas y el trabajo colaborativo.",
+        cover_url: "/img/HooBoo.png",
+        video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        repo_url: "https://github.com/PatriciaAlEs/hooboo",
+        techKeys: ["HTML5", "CSS3", "JavaScript", "React", "Bootstrap", "Python", "Flask", "SQLAlchemy", "PostgreSQL", "JWT"],
+        images: []
+    },
+    {
         id: 1,
         title: "Habit Tracker",
         short_desc: "Una app para trackear hábitos diarios que hice para aprender a gestionar estado en React sin librerías externas. El reto fue mantener todo sincronizado con LocalStorage y que no se perdiera nada al recargar. Afiancé React hooks, manejo de arrays y objetos, y persistencia de datos en el navegador.",
@@ -23,39 +56,6 @@ export const staticProjects = [
         video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
         repo_url: "https://github.com/PatriciaAlEs/habit-tracker",
         techKeys: ["HTML5", "CSS3", "JavaScript", "React", "Bootstrap"],
-        images: []
-    },
-    {
-        id: 2,
-        title: "Hooboo",
-        short_desc: "Red social para lectores donde puedes buscar libros (con la API de Google Books), guardar favoritos, comentar y calificar. Proyecto en equipo que me hizo sudar con JWT, relaciones de base de datos y la coordinación entre frontend y backend.",
-        long_desc: "Este fue un proyecto grupal bastante ambicioso: una red social de libros completa. Integramos la API de Google Books, montamos un sistema de autenticación con JWT (que al principio nos dio más dolores de cabeza de los esperados), y diseñamos la base de datos con relaciones entre usuarios, libros, comentarios y calificaciones. Lo más complicado fue sincronizar el trabajo del equipo y debuggear errores de CORS y tokens expirados. Pero salió adelante y aprendí un montón sobre arquitectura backend, APIs de terceros y cómo NO mergear código sin revisar primero 😂.",
-        cover_url: "/img/HooBoo.png",
-        video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        repo_url: "https://github.com/PatriciaAlEs/hooboo",
-        techKeys: ["HTML5", "CSS3", "JavaScript", "React", "Bootstrap", "Python", "Flask", "SQLAlchemy", "PostgreSQL", "JWT"],
-        images: []
-    },
-    {
-        id: 3,
-        title: "NameGen",
-        short_desc: "Generador de nombres random para cuando no se te ocurre cómo llamar un proyecto, personaje o variable. Vanilla JavaScript puro, sin frameworks.",
-        long_desc: "Un proyecto más sencillo pero súper útil. Lo hice en JavaScript vanilla porque quería practicar sin depender de React. La idea era generar nombres aleatorios aplicando filtros (longitud, letras iniciales, etc.). Lo más interesante fue optimizar la lógica para que fuera rápida y crear una UI limpia solo con CSS. Me ayudó a recordar que no siempre necesitas un framework para todo, y que dominar JavaScript básico es clave.",
-        cover_url: "/img/NameGen.png",
-        video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        repo_url: "https://github.com/PatriciaAlEs/PatriciaAlEs-generador-nombres",
-        techKeys: ["HTML5", "CSS3", "JavaScript"],
-        images: []
-    },
-    {
-        id: 4,
-        title: "PORTFOLIO",
-        short_desc: "Este portfolio que estás viendo ahora mismo 😊. Full-stack con React y Flask, sistema de autenticación para descargar mi CV, gestión de proyectos desde la base de datos y diseño responsive.",
-        long_desc: "El proyecto más personal. Quería un portfolio que no fuera solo 'bonito', sino funcional y que mostrara lo que sé hacer de verdad. Implementé autenticación (para que descarguen el CV solo si están registrados), un backend con Flask que sirve los proyectos desde una base de datos PostgreSQL, y un diseño con TailwindCSS que me encanta. Los mayores desafíos fueron optimizar el rendimiento, hacer el diseño responsive sin que se rompiera nada, y desplegar todo en producción sin que explotara.",
-        cover_url: "/img/portfolio.png",
-        video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        repo_url: "https://github.com/PatriciaAlEs/mi-nuevo-portfolio",
-        techKeys: ["HTML5", "CSS3", "JavaScript", "React", "Python", "Flask", "SQLAlchemy", "PostgreSQL", "JWT", "Git", "GitHub"],
         images: []
     }
 ];
