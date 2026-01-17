@@ -11,6 +11,4 @@ pip install --upgrade pip
 pip install -r api/requirements.txt
 pip install gunicorn psycopg2-binary
 
-# Crear las tablas y cargar datos de seed en la base de datos
-cd api
-python seed.py
+
