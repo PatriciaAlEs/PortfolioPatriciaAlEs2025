@@ -139,9 +139,29 @@
                     "hidden": true
                 },
                 {
+                    "path": "dist/favicon.svg",
+                    "name": "favicon.svg",
+                    "hidden": true
+                },
+                {
+                    "path": "dist/icon.svg",
+                    "name": "icon.svg",
+                    "hidden": true
+                },
+                {
+                    "path": "dist/img",
+                    "name": "img",
+                    "hidden": true
+                },
+                {
                     "path": "dist/index.html",
                     "name": "index.html",
                     "hidden": false
+                },
+                {
+                    "path": "dist/Patricia Alvarez.jpg",
+                    "name": "Patricia Alvarez.jpg",
+                    "hidden": true
                 }
             ],
             "done": false
@@ -1553,6 +1573,16 @@
                     "path": "public/icon.svg",
                     "name": "icon.svg",
                     "hidden": true
+                },
+                {
+                    "path": "public/img",
+                    "name": "img",
+                    "hidden": true
+                },
+                {
+                    "path": "public/Patricia Alvarez.jpg",
+                    "name": "Patricia Alvarez.jpg",
+                    "hidden": true
                 }
             ],
             "done": false
@@ -1575,6 +1605,11 @@
                 {
                     "path": "src/components",
                     "name": "components",
+                    "hidden": true
+                },
+                {
+                    "path": "src/data",
+                    "name": "data",
                     "hidden": true
                 },
                 {
@@ -1652,5 +1687,5 @@
     "bugsLink": null,
     "videoSolutions": false,
     "localhostOnly": false,
-    "session": 2769389762232874500
+    "session": 5789933757641656000
 }

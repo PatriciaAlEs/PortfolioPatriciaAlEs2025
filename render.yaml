@@ -1,5 +1,4 @@
 services:
-  # Backend API (Flask) que también sirve el frontend
   - type: web
     name: portfolio-api
     runtime: python
@@ -12,8 +11,6 @@ services:
         value: 3.11.0
       - key: NODE_VERSION
         value: 20.0.0
-      - key: VITE_API_URL
-        value: https://portfolio-api.onrender.com/api
       - key: DB_URL
         fromDatabase:
           name: portfolio-db
@@ -23,7 +20,6 @@ services:
       - key: FLASK_APP
         value: api/app.py
 
-# Base de datos PostgreSQL
 databases:
   - name: portfolio-db
     region: oregon
