@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, make_response
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 import os
@@ -52,11 +52,20 @@ def create_app():
 
         file_path = os.path.join(DIST_DIR, path)
         if path and os.path.isfile(file_path):
-            return send_from_directory(DIST_DIR, path)
+            response = make_response(send_from_directory(DIST_DIR, path))
+            # Cache assets with hash for 1 year, no-cache for index.html
+            if path.startswith('assets/'):
+                response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+            return response
 
         index_path = os.path.join(DIST_DIR, "index.html")
         if os.path.isfile(index_path):
-            return send_from_directory(DIST_DIR, "index.html")
+            response = make_response(send_from_directory(DIST_DIR, "index.html"))
+            # Never cache index.html to ensure users get latest version
+            response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+            response.headers['Pragma'] = 'no-cache'
+            response.headers['Expires'] = '0'
+            return response
 
         return {"error": "Not found"}, 404
 
