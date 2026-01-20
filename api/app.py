@@ -1,11 +1,14 @@
 from flask import Flask, send_from_directory, make_response
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+import sys
 import os
-from dotenv import load_dotenv
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 
 from extensions import db  # instancia común
-
+from dotenv import load_dotenv
 # Cargar variables de entorno
 load_dotenv()
 
