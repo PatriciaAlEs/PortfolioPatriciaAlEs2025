@@ -18,9 +18,9 @@ def create_app():
 
     # Rutas
     # Rutas corregidas
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Apuntamos a la carpeta dist que está dentro de Front
-    DIST_DIR = os.path.join(BASE_DIR, "front", "dist")
+# En tu archivo app.py, cambia las rutas a esto:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # Al estar en la raíz es más simple
+    DIST_DIR = os.path.join(BASE_DIR, "..", "dist") # Subes un nivel desde api/ hacia la raíz
 
 # Asegúrate de que Flask sepa dónde están los estáticos de React
     app = Flask(__name__, 
