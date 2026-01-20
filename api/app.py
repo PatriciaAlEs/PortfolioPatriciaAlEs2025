@@ -17,10 +17,15 @@ def create_app():
         db_url = db_url.replace("postgres://", "postgresql://", 1)
 
     # Rutas
+    # Rutas corregidas
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    DIST_DIR = os.path.join(BASE_DIR, "dist")
+# Apuntamos a la carpeta dist que está dentro de Front
+    DIST_DIR = os.path.join(BASE_DIR, "Front", "dist") 
 
-    app = Flask(__name__, static_folder="static", static_url_path="/static")
+# Asegúrate de que Flask sepa dónde están los estáticos de React
+    app = Flask(__name__, 
+            static_folder=os.path.join(DIST_DIR, "assets"), 
+            static_url_path="/assets")
 
     # Config
     app.config["SQLALCHEMY_DATABASE_URI"] = db_url
