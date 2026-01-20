@@ -20,13 +20,12 @@ def create_app():
     # Rutas corregidas
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Apuntamos a la carpeta dist que está dentro de Front
-    DIST_DIR = os.path.join(BASE_DIR, "Front", "dist") 
+    DIST_DIR = os.path.join(BASE_DIR, "front", "dist")
 
 # Asegúrate de que Flask sepa dónde están los estáticos de React
     app = Flask(__name__, 
             static_folder=os.path.join(DIST_DIR, "assets"), 
             static_url_path="/assets")
-
     # Config
     app.config["SQLALCHEMY_DATABASE_URI"] = db_url
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
