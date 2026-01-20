@@ -1,7 +1,7 @@
 services:
   - type: web
     name: portfolio-api
-    runtime: python
+    env: python
     buildCommand: "npm install; npm run build; pip install --upgrade pip; pip install -r api/requirements.txt"
     startCommand: "gunicorn --chdir api --bind 0.0.0.0:$PORT --workers 4 app:app"
     envVars:
