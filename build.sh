@@ -3,12 +3,18 @@
 set -o errexit
 
 # Instalar dependencias de Node (para el frontend)
-npm install
+echo "Instalando dependencias de Node..."
+npm install --production=false
+
+echo "Construyendo frontend..."
 npm run build
 
 # Instalar dependencias de Python
+echo "Instalando dependencias de Python..."
 pip install --upgrade pip
 pip install -r api/requirements.txt
-pip install gunicorn psycopg2-binary
+pip install gunicorn
+
+echo "Build completado exitosamente"
 
 

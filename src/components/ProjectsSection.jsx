@@ -9,16 +9,16 @@ export default function ProjectsSection() {
   useEffect(() => { actions.loadProjects(); }, []);
 
   return (
-    <section id="proyectos" className="section projects-wrap py-20">
+    <section id="proyectos" className="section projects-wrap py-12 sm:py-16 md:py-20 px-4">
       <div className="container-narrow">
         {/* Título principal con más protagonismo */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black text-green-dark mb-4 relative inline-block">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-green-dark mb-4 relative inline-block">
             PROYECTOS
             <div className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-green-hero via-green-dark to-green-hero rounded-full shadow-lg"></div>
           </h2>
           <p className="text-ink text-lg mt-6 max-w-2xl mx-auto font-bold">
-            Explora algunos de los proyectos que he desarrollado
+            Explora algunos de los proyectos que he desarrollado; en "Ver más" tendrás acceso al live y al repo en GitHub.
           </p>
         </div>
 

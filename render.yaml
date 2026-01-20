@@ -2,23 +2,21 @@ services:
   - type: web
     name: portfolio-api
     runtime: python
-    region: oregon
-    plan: free
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn --chdir api app:app"
+    buildCommand: "npm install && npm run build && pip install --upgrade pip && pip install -r api/requirements.txt"
+    startCommand: "gunicorn --chdir api --bind 0.0.0.0 --workers 4 app:app"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: NODE_VERSION
         value: 20.0.0
-      - key: DB_URL
+      - key: DATABASE_URL
         fromDatabase:
           name: portfolio-db
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
-      - key: FLASK_APP
-        value: api/app.py
+      - key: FLASK_ENV
+        value: production
 
 databases:
   - name: portfolio-db

@@ -15,17 +15,6 @@ export const staticTechs = [
 
 export const staticProjects = [
     {
-        id: 4,
-        title: "PORTFOLIO",
-        short_desc: "Portfolio personal construido con React y Vite como plantilla base para mostrar mis proyectos, habilidades y trayectoria profesional.",
-        long_desc: "Portfolio personal construido con React y Vite como plantilla base para mostrar mis proyectos, habilidades y trayectoria profesional. El proyecto está estructurado con una arquitectura escalable, estilos con TailwindCSS y preparado para añadir páginas, componentes y secciones personalizadas. Sirve como base sólida para desarrollar una web de presentación profesional con navegación, estilos modernos y fácil mantenimiento.",
-        cover_url: "/img/portfolio.png",
-        video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        repo_url: "https://github.com/PatriciaAlEs/mi-nuevo-portfolio",
-        techKeys: ["HTML5", "CSS3", "JavaScript", "React", "Python", "Flask", "SQLAlchemy", "PostgreSQL", "JWT", "Git", "GitHub"],
-        images: []
-    },
-    {
         id: 3,
         title: "NameGen",
         short_desc: "Aplicación web full-stack con frontend en React y backend en Python/Flask que genera nombres aleatorios para distintos géneros de juegos (RPG, FPS, etc.). Incluye lógica de generación combinando listas de prefijos y sufijos por estilo, y una API REST que alimenta la interfaz de usuario con resultados personalizados.",
@@ -51,7 +40,7 @@ export const staticProjects = [
         id: 1,
         title: "Habit Tracker",
         short_desc: "Una app para trackear hábitos diarios que hice para aprender a gestionar estado en React sin librerías externas. El reto fue mantener todo sincronizado con LocalStorage y que no se perdiera nada al recargar. Afiancé React hooks, manejo de arrays y objetos, y persistencia de datos en el navegador.",
-        long_desc: "Mi primer proyecto 'serio' en React. Quería algo funcional que yo misma pudiera usar para seguir hábitos (porque post-its no me funcionaban 😅). El mayor desafío fue entender cómo actualizar el estado correctamente sin mutar arrays directamente y hacer que todo se guardara automáticamente en LocalStorage. Aprendí muchísimo sobre useEffect, useState y cómo React re-renderiza componentes.",
+        long_desc: "Mi primer proyecto 'serio' en React. Quería algo funcional que yo misma pudiera usar para seguir hábitos (porque post-its no me funcionaban). El mayor desafío fue entender cómo actualizar el estado correctamente sin mutar arrays directamente y hacer que todo se guardara automáticamente en LocalStorage. Aprendí muchísimo sobre useEffect, useState y cómo React re-renderiza componentes.",
         cover_url: "/img/habit_tracker.jpeg",
         video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
         repo_url: "https://github.com/PatriciaAlEs/habit-tracker",

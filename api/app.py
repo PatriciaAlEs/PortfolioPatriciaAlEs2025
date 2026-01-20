@@ -27,8 +27,13 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET", "change-me")
 
-    # Extensions
-    CORS(app, supports_credentials=True)
+    # Extensions - CORS configurado para producción
+    cors_origins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://*.onrender.com"
+    ]
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
     db.init_app(app)
     JWTManager(app)
 

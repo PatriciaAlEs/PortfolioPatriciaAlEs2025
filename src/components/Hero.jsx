@@ -1,61 +1,57 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import confetti from 'canvas-confetti';
+import corporativePic from "../assets/img/corporative pic.jpeg";
 
 export default function Hero() {
   const { store, dispatch } = useGlobalReducer();
 
   const handleCVDownload = () => {
+    // Descarga directa del CV sin necesidad de registro
+    window.open("https://drive.google.com/uc?export=download&id=1thS8XpNQfm3dktvUke_8ccksko_lIFPt", "_blank");
+
+    // Animación de confeti
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  };
+
+  const handleExclusiveContent = () => {
     if (store.user) {
-      // Usuario logueado: permitir descarga
-      window.open("https://drive.google.com/uc?export=download&id=1thS8XpNQfm3dktvUke_8ccksko_lIFPt", "_blank");
-
-      // Animación de confeti
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-
-      // Confeti adicional con delay
-      setTimeout(() => {
-        confetti({
-          particleCount: 50,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 }
-        });
-      }, 250);
-
-      setTimeout(() => {
-        confetti({
-          particleCount: 50,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 }
-        });
-      }, 400);
+      // Usuario logueado: scroll a la sección "Más sobre mí"
+      const moreAboutSection = document.getElementById('mas-sobre-mi');
+      if (moreAboutSection) {
+        moreAboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     } else {
       // Usuario no logueado: mostrar modal de login
-      alert("Para descargar mi CV debes estar registrado e iniciar sesión");
+      alert("Para ver contenido exclusivo debes estar registrado e iniciar sesión");
       dispatch({ type: "openAuth", mode: "login" });
     }
   };
 
   return (
-    <section id="top" className="hero my-4 sm:my-6 section">
+    <section id="top" className="hero my-4 sm:my-6 section px-4">
       <div className="container-narrow">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 items-center">
           <div className="order-2 lg:order-1 space-y-3 sm:space-y-4">
-            <span className="tag text-xs sm:text-sm">Portfolio · 2025</span>
-            <h1 className="title mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">PORTFOLIO</h1>
-            <p className="text-base sm:text-lg md:text-xl font-semibold text-white/90">
+            <h1 className="mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: 'Inter, sans-serif' }}>Patricia Álvarez</h1>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white/90">
               Full-Stack Developer — React · Flask · SQLAlchemy · JWT · WooCommerce
             </p>
 
-            <p className="text-sm sm:text-base text-white/80 leading-relaxed">
-              Me encanta convertir ideas en código que funcione de verdad. Aquí encontrarás
-              proyectos reales, las tecnologías con las que trabajo y cómo resuelvo problemas del día a día.
-            </p>
+            <div className="space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
+              <p>
+                ¡Hola! Soy <strong>Patricia</strong>, desarrolladora full-stack y Teaching Assistant en 4Geeks Academy.
+              </p>
+              <p>
+                Me paso el día entre React y Flask, montando aplicaciones que resuelvan problemas reales. Me gusta que el código sea limpio y fácil de mantener (porque sé que alguien lo va a leer después, probablemente yo misma). También trabajo con bases de datos, JWT, WooCommerce... lo que haga falta para que las cosas funcionen.
+              </p>
+              <p>
+                Lo que más me motiva es <strong>ver ideas convertirse en productos que la gente usa de verdad</strong>. Si algo no sirve para resolver un problema o hacer la vida más fácil, ¿para qué programarlo?
+              </p>
+            </div>
 
             <div className="flex flex-wrap gap-3 pt-2">
               <button
@@ -67,13 +63,24 @@ export default function Hero() {
                 </svg>
                 Descargar CV
               </button>
+              {store.user && (
+                <button
+                  className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-pink-light to-pink-light/80 text-ink font-semibold rounded-lg hover:from-pink-light/90 hover:to-pink-light transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base group"
+                  onClick={handleExclusiveContent}
+                >
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                  Ver Contenido Extra
+                </button>
+              )}
             </div>
           </div>
 
           <div className="order-1 lg:order-2 text-center">
             <img
-              className="photo mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md animate-float"
-              src="/Patricia Alvarez.jpg"
+              className="photo mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md"
+              src={corporativePic}
               alt="Patricia Álvarez"
             />
           </div>

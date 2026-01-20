@@ -23,11 +23,13 @@ export function storeReducer(state, action) {
     case "openContact": return { ...state, ui: { ...state.ui, contactOpen: true } };
     case "closeContact": return { ...state, ui: { ...state.ui, contactOpen: false } };
     case "login":
+      sessionStorage.removeItem('hasSeenWelcome');
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("user", JSON.stringify(action.payload.user));
       return { ...state, token: action.payload.token, user: action.payload.user, ui: { ...state.ui, authOpen: false } };
     case "logout":
       localStorage.removeItem("token"); localStorage.removeItem("user");
+      sessionStorage.removeItem('hasSeenWelcome');
       return { ...state, token: null, user: null };
     default: return state;
   }

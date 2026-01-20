@@ -70,11 +70,11 @@ export default function AuthModal() {
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-2xl hover:scale-110 transition-transform duration-200"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-xl hover:scale-110 transition-transform duration-200"
                     onClick={() => setShowPassword(!showPassword)}
                     title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
                   >
-                    {showPassword ? "🙈" : "🙉"}
+                    <i className={`fa-solid ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
                   </button>
                 </div>
               </div>
