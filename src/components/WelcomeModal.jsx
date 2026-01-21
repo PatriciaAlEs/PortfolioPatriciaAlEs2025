@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useTranslation from "../hooks/useTranslation.jsx";
 import confetti from 'canvas-confetti';
 
 const WelcomeModal = () => {
     const { store } = useGlobalReducer();
+    const { t } = useTranslation();
     const [showModal, setShowModal] = useState(false);
     const [animateItems, setAnimateItems] = useState([]);
 
@@ -134,7 +136,7 @@ const WelcomeModal = () => {
                             animation: 'slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both'
                         }}
                     >
-                        ¡Gracias por registrarte!
+                        {t("welcomeTitle")}
                     </h2>
 
                     {/* Mensaje */}
@@ -144,7 +146,7 @@ const WelcomeModal = () => {
                             animation: 'slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both'
                         }}
                     >
-                        Ahora tienes acceso a <strong className="text-pink-light">datos extra sobre mí</strong> que solo usuarios registrados pueden ver.
+                        {t("welcomeMessage")} <strong className="text-pink-light"></strong>
                     </p>
 
                     {/* Lista de beneficios con animación individual */}
@@ -163,7 +165,7 @@ const WelcomeModal = () => {
                             }}
                         >
                             <i className="fa-solid fa-check-circle text-pink-light text-xl"></i>
-                            <span className="text-white/90 text-sm sm:text-base">Descubre mi canción favorita</span>
+                            <span className="text-white/90 text-sm sm:text-base">{t("welcomeBenefit1")}</span>
                         </div>
                         <div
                             className="flex items-center gap-3 mb-3 transition-all duration-300"
@@ -174,7 +176,7 @@ const WelcomeModal = () => {
                             }}
                         >
                             <i className="fa-solid fa-check-circle text-pink-light text-xl"></i>
-                            <span className="text-white/90 text-sm sm:text-base">Conoce mis lecturas de 2025</span>
+                            <span className="text-white/90 text-sm sm:text-base">{t("welcomeBenefit2")}</span>
                         </div>
                         <div
                             className="flex items-center gap-3 transition-all duration-300"
@@ -185,7 +187,7 @@ const WelcomeModal = () => {
                             }}
                         >
                             <i className="fa-solid fa-check-circle text-pink-light text-xl"></i>
-                            <span className="text-white/90 text-sm sm:text-base">Datos curiosos sobre mí</span>
+                            <span className="text-white/90 text-sm sm:text-base">{t("welcomeBenefit3")}</span>
                         </div>
                     </div>
 
@@ -197,7 +199,7 @@ const WelcomeModal = () => {
                             animation: 'slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both'
                         }}
                     >
-                        <span className="relative z-10">¡Ver datos extra sobre mí!</span>
+                        <span className="relative z-10">{t("welcomeButton")}</span>
                         <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                     </button>
                 </div>

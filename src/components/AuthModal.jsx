@@ -1,8 +1,10 @@
 import { useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useTranslation from "../hooks/useTranslation.jsx";
 
 export default function AuthModal() {
   const { store, dispatch, actions } = useGlobalReducer();
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", password: "", kind: "particular" });
   const [showPassword, setShowPassword] = useState(false);
   const mode = store.ui.authMode;
@@ -22,7 +24,7 @@ export default function AuthModal() {
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-ink">
-                {mode === "register" ? "Crear cuenta" : "Iniciar sesión"}
+                {mode === "register" ? t("createAccount") : t("login")}
               </h2>
               <button
                 className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
@@ -37,7 +39,7 @@ export default function AuthModal() {
             <form onSubmit={submit} className="space-y-4">
               {mode === "register" && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t("name")}</label>
                   <input
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-hero focus:border-green-hero transition-colors duration-200"
                     required
@@ -48,7 +50,7 @@ export default function AuthModal() {
               )}
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t("email")}</label>
                 <input
                   type="email"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-hero focus:border-green-hero transition-colors duration-200"
@@ -59,7 +61,7 @@ export default function AuthModal() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t("password")}</label>
                 <div className="relative">
                   <input
                     type={showPassword ? "text" : "password"}
@@ -72,7 +74,7 @@ export default function AuthModal() {
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-xl hover:scale-110 transition-transform duration-200"
                     onClick={() => setShowPassword(!showPassword)}
-                    title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                    title={showPassword ? t("hidePassword") : t("showPassword")}
                   >
                     <i className={`fa-solid ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
                   </button>
@@ -81,14 +83,14 @@ export default function AuthModal() {
 
               {mode === "register" && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t("type")}</label>
                   <select
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-hero focus:border-green-hero transition-colors duration-200"
                     value={form.kind}
                     onChange={e => setForm({ ...form, kind: e.target.value })}
                   >
-                    <option value="particular">Particular</option>
-                    <option value="empresa">Empresa</option>
+                    <option value="particular">{t("individual")}</option>
+                    <option value="empresa">{t("company")}</option>
                   </select>
                 </div>
               )}
@@ -98,7 +100,7 @@ export default function AuthModal() {
                   className="w-full bg-green-hero text-white font-semibold py-3 rounded-lg hover:bg-green-dark transition-all duration-300 transform hover:scale-105"
                   type="submit"
                 >
-                  {mode === "register" ? "Registrarme" : "Entrar"}
+                  {mode === "register" ? t("register") : t("enter")}
                 </button>
 
                 <button
@@ -106,7 +108,7 @@ export default function AuthModal() {
                   type="button"
                   onClick={() => dispatch({ type: "openAuth", mode: mode === "register" ? "login" : "register" })}
                 >
-                  {mode === "register" ? "Tengo cuenta" : "Crear cuenta"}
+                  {mode === "register" ? t("haveAccount") : t("noAccount")}
                 </button>
               </div>
             </form>

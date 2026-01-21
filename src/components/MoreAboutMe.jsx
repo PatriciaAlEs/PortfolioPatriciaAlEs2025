@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useTranslation from "../hooks/useTranslation.jsx";
 
 const MoreAboutMe = () => {
     const { store } = useGlobalReducer();
+    const { t } = useTranslation();
     const [visibleCards, setVisibleCards] = useState([]);
     const sectionRef = useRef(null);
 
@@ -49,7 +51,7 @@ const MoreAboutMe = () => {
     return (
         <section ref={sectionRef} id="mas-sobre-mi" className="my-12 px-4 w-full overflow-hidden">
             <div className="container-narrow max-w-full bg-white/8 backdrop-blur-lg rounded-3xl shadow-[0_18px_55px_rgba(0,0,0,0.18)] border border-white/10 p-5 sm:p-6">
-                <h2 className="section-title mb-6 sm:mb-8 text-center text-2xl sm:text-3xl">MÁS SOBRE MÍ</h2>
+                <h2 className="section-title mb-6 sm:mb-8 text-center text-2xl sm:text-3xl">{t("moreAboutMeTitle")}</h2>
 
                 <div className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide">
                     {/* Canción favorita */}
@@ -70,7 +72,7 @@ const MoreAboutMe = () => {
                         {/* Contenido relativo */}
                         <div className="relative z-10">
                             <h3 className="text-lg sm:text-xl font-bold text-green-hero mb-3 sm:mb-4 text-center">
-                                Mi Canción Favorita
+                                {t("favoriteSong")}
                             </h3>
                             <div className="aspect-video rounded-lg sm:rounded-xl overflow-hidden shadow-2xl mb-3 sm:mb-4">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent z-10 rounded-lg sm:rounded-xl pointer-events-none"></div>
@@ -86,7 +88,7 @@ const MoreAboutMe = () => {
                                 ></iframe>
                             </div>
                             <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
-                                También me encanta Imagine Dragons, Johnny Cash, Mumford and Sons y todo lo que tenga vibes country. La música es +100 de aura. Una buena BSO lo cambia todo.
+                                {t("songDesc")}
                             </p>
                         </div>
                     </div>
@@ -109,7 +111,7 @@ const MoreAboutMe = () => {
                         {/* Contenido relativo */}
                         <div className="relative z-10">
                             <h3 className="text-lg sm:text-xl font-bold text-green-hero mb-3 sm:mb-4 text-center">
-                                Lectora Empedernida
+                                {t("hardcoreReader")}
                             </h3>
                             <div className="aspect-video rounded-lg sm:rounded-xl overflow-hidden shadow-2xl mb-3 sm:mb-4">
                                 <img
@@ -119,8 +121,8 @@ const MoreAboutMe = () => {
                                 />
                             </div>
                             <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
-                                En 2025 me leí <strong className="text-pink-light text-2xl">63 libros</strong>. Sí, sesenta y tres.
-                                Me encanta perderme en historias, y cuando algo me atrapa, no hay quien me pare.
+                                <strong className="text-pink-light text-2xl">{t("readerNum")}</strong><br />
+                                {t("readerDesc")}
                             </p>
                         </div>
                     </div>
@@ -143,7 +145,7 @@ const MoreAboutMe = () => {
                         {/* Contenido relativo */}
                         <div className="relative z-10">
                             <h3 className="text-lg sm:text-xl font-bold text-green-hero mb-3 sm:mb-4 text-center">
-                                Friki Fan
+                                {t("geekFan")}
                             </h3>
                             <div className="aspect-video rounded-lg sm:rounded-xl overflow-hidden shadow-2xl mb-3 sm:mb-4">
                                 <img
@@ -153,8 +155,7 @@ const MoreAboutMe = () => {
                                 />
                             </div>
                             <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
-                                Soy <strong>super fan de Harry Potter y Star Wars</strong> hasta el punto de que
-                                los llevo tatuados en mi piel. Nada de muggle por aquí. Literalmente. No es broma.
+                                {t("geekDesc")}
                             </p>
                         </div>
                     </div>
@@ -177,7 +178,7 @@ const MoreAboutMe = () => {
                         {/* Contenido relativo */}
                         <div className="relative z-10">
                             <h3 className="text-lg sm:text-xl font-bold text-green-hero mb-3 sm:mb-4 text-center">
-                                Madre Gatuna por Partida Doble
+                                {t("catMom")}
                             </h3>
                             <div className="aspect-video rounded-lg sm:rounded-xl overflow-hidden shadow-2xl mb-3 sm:mb-4">
                                 <img
@@ -187,8 +188,8 @@ const MoreAboutMe = () => {
                                 />
                             </div>
                             <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
-                                Tengo dos gatos que son mi vida. Soy esa persona que habla de sus gatos sin que nadie me haya preguntado.
-                                No tengo arreglo. <i className="fa-solid fa-heart text-pink-light ml-1"></i>
+                                {t("catMomDesc")}
+                                <i className="fa-solid fa-heart text-pink-light ml-1"></i>
                             </p>
                         </div>
                     </div>
@@ -211,7 +212,7 @@ const MoreAboutMe = () => {
                         {/* Contenido relativo */}
                         <div className="relative z-10">
                             <h3 className="text-lg sm:text-xl font-bold text-green-hero mb-3 sm:mb-4 text-center">
-                                Halloween & Calabazas
+                                {t("halloweenLover")}
                             </h3>
                             <div className="aspect-video rounded-lg sm:rounded-xl overflow-hidden shadow-2xl mb-3 sm:mb-4">
                                 <img
@@ -221,8 +222,8 @@ const MoreAboutMe = () => {
                                 />
                             </div>
                             <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
-                                Soy fanática de Halloween y las calabazas. Si pudiera, decoraría mi casa con calabazas todo el año.
-                                La temporada de otoño es mi favorita. <i className="fa-solid fa-pumpkin text-orange-400 ml-1"></i>
+                                {t("halloweenDesc")}
+                                <i className="fa-solid fa-pumpkin text-orange-400 ml-1"></i>
                             </p>
                         </div>
                     </div>
@@ -245,7 +246,7 @@ const MoreAboutMe = () => {
                         {/* Contenido relativo */}
                         <div className="relative z-10">
                             <h3 className="text-lg sm:text-xl font-bold text-green-hero mb-3 sm:mb-4 text-center">
-                                Asturiana & Alicantina
+                                {t("roots")}
                             </h3>
                             <div className="aspect-video rounded-lg sm:rounded-xl overflow-hidden shadow-2xl mb-3 sm:mb-4">
                                 <img
@@ -255,7 +256,7 @@ const MoreAboutMe = () => {
                                 />
                             </div>
                             <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
-                                Nacida en Asturias, de adopción en Alicante. Dos raíces, dos lugares que llevaré siempre en mi corazón.
+                                {t("rootsDesc")}
                             </p>
                         </div>
                     </div>
@@ -264,7 +265,7 @@ const MoreAboutMe = () => {
                 <div className="mt-6 text-center">
                     <p className="text-white/60 text-sm italic">
                         <i className="fa-solid fa-lock-open mr-2"></i>
-                        Esta sección exclusiva es visible solo para usuarios registrados
+                        {t("exclusiveNote")}
                     </p>
                 </div>
             </div>
