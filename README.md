@@ -3,11 +3,15 @@
 Portfolio bilingüe con React + Vite (frontend) y Flask (backend) que muestra experiencia, proyectos, contacto y contenido exclusivo para usuarias registradas. Incluye conmutador de idioma (ES/EN), autenticación con JWT y persistencia de sesión, y modales con detalles de proyectos y CV.
 
 ## Capturas
-- Home (ES): ![Home](src/img_readme/Home.png)
-- Home (EN, logueada): ![Home EN](src/img_readme/Home_ingles.png)
+| Home (ES) | Home (EN, logueada) |
+| --- | --- |
+| ![Home](src/img_readme/Home.png) | ![Home EN](src/img_readme/Home_ingles.png) |
+
+| Proyectos | Tecnologías & footer |
+| --- | --- |
+| ![Projects](src/img_readme/PRojects.png) | ![Tecnologías](src/img_readme/tecnologias_footer.png) |
+
 - Home (EN, no logueada): ![Home EN no log](src/img_readme/Home_nolog_ingles.png)
-- Proyectos: ![Projects](src/img_readme/PRojects.png)
-- Tecnologías & footer: ![Tecnologías](src/img_readme/tecnologias_footer.png)
 
 ## Características principales
 - Bilingüe ES/EN con persistencia en `localStorage` y cambio en tiempo real.
@@ -61,4 +65,4 @@ flask run --host=127.0.0.1 --port=5000
 - El contenido extra y el modal de contacto requieren sesión iniciada.
 
 ## Licencia
-MIT (ver `LICENSE`).
+Sin licencia explícita.
