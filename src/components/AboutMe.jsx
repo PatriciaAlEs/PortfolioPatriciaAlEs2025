@@ -42,7 +42,7 @@ const AboutMe = () => {
                 <div className="col-12 col-lg-7 right">
                     <div className="box">
                         <p className="mb-2">
-                            ¡Hola! Soy <strong>Patricia</strong>, desarrolladora full-stack y Teaching Assistant en 4Geeks Academy.
+                            ¡Hola! Soy <strong>Patricia</strong>, desarrolladora full-stack y Mentora Técnica en 4Geeks Academy.
                         </p>
                         <p className="mb-2">
                             Me paso el día entre React y Flask, montando aplicaciones que resuelvan problemas reales. Me gusta que el código sea limpio y fácil de mantener (porque sé que alguien lo va a leer después, probablemente yo misma 😅). También trabajo con bases de datos, JWT, WooCommerce... lo que haga falta para que las cosas funcionen.

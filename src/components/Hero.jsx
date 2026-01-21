@@ -7,7 +7,7 @@ export default function Hero() {
 
   const handleCVDownload = () => {
     // Descarga directa del CV sin necesidad de registro
-    window.open("https://drive.google.com/uc?export=download&id=1thS8XpNQfm3dktvUke_8ccksko_lIFPt", "_blank");
+    window.open("https://drive.google.com/file/d/13lU_eQd-ilb3VkELK47OoifacHVPhW69/view?usp=drive_link", "_blank");
 
     // Animación de confeti
     confetti({
@@ -38,15 +38,15 @@ export default function Hero() {
           <div className="order-2 lg:order-1 space-y-3 sm:space-y-4">
             <h1 className="mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: 'Inter, sans-serif' }}>Patricia Álvarez</h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white/90">
-              Full-Stack Developer — React · Flask · SQLAlchemy · JWT · WooCommerce
+              Full-Stack Developer & QA Tester — React · Flask · SQLAlchemy · JWT · WooCommerce
             </p>
 
             <div className="space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
               <p>
-                ¡Hola! Soy <strong>Patricia</strong>, desarrolladora full-stack y Teaching Assistant en 4Geeks Academy.
+                ¡Hola! Soy <strong>Patricia</strong>, desarrolladora full-stack, QA tester y Mentora Técnica en 4Geeks Academy.
               </p>
               <p>
-                Me paso el día entre React y Flask, montando aplicaciones que resuelvan problemas reales. Me gusta que el código sea limpio y fácil de mantener (porque sé que alguien lo va a leer después, probablemente yo misma). También trabajo con bases de datos, JWT, WooCommerce... lo que haga falta para que las cosas funcionen.
+                Me paso el día entre React y Flask, montando aplicaciones que resuelvan problemas reales. Me gusta que el código sea limpio y fácil de mantener (porque sé que alguien lo va a leer después, probablemente yo misma). También trabajo con bases de datos, JWT, WooCommerce... y como QA tester me aseguro de que todo funcione sin sorpresas.
               </p>
               <p>
                 Lo que más me motiva es <strong>ver ideas convertirse en productos que la gente usa de verdad</strong>. Si algo no sirve para resolver un problema o hacer la vida más fácil, ¿para qué programarlo?

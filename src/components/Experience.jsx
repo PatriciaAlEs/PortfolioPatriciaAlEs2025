@@ -8,7 +8,7 @@ const Experience = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="ex-card group">
                         <div className="ex-head text-lg mb-2 group-hover:text-green-hero transition-colors duration-300">
-                            Teaching Assistant · 4Geeks
+                            Mentora Técnica · 4Geeks
                         </div>
                         <div className="text-sm text-gray-500 mb-4 font-medium">2024 — actual</div>
                         <p className="text-gray-700 leading-relaxed">
