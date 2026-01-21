@@ -1,9 +1,11 @@
 // ProjectCard.jsx
 import { useState, useEffect, useRef } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useProjectTranslation from "../hooks/useProjectTranslation.jsx";
 
 export default function ProjectCard({ project, index }) {
   const { dispatch } = useGlobalReducer();
+  const { getProjectDescription } = useProjectTranslation();
   const [showImageModal, setShowImageModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef(null);
@@ -104,7 +106,7 @@ export default function ProjectCard({ project, index }) {
               {/* Descripción con diseño mejorado */}
               <div className="bg-pink-light/30 p-3 sm:p-4 rounded-xl shadow-sm mb-4 sm:mb-6 border-l-4 border-green-dark">
                 <p className="text-ink leading-relaxed text-sm sm:text-base">
-                  {project.short_desc}
+                  {getProjectDescription(project.id, "short_desc") || project.short_desc}
                 </p>
               </div>
             </div>

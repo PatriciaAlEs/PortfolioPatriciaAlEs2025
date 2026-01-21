@@ -1,7 +1,9 @@
 // Footer.jsx
 import { useState } from 'react';
+import useTranslation from '../hooks/useTranslation.jsx';
 
 export default function Footer() {
+  const { t } = useTranslation();
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleEmailClick = async (e) => {
@@ -41,38 +43,38 @@ export default function Footer() {
               Patricia <span className="text-pink-light">Álvarez</span>
             </h3>
             <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed text-center sm:text-left max-w-xs">
-              Desarrolladora Full Stack creando experiencias web que funcionan de verdad.
+              {t("footerDesc")}
             </p>
           </div>
 
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="text-white font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-5 uppercase tracking-wider">Accesos Rápidos</h4>
+            <h4 className="text-white font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-5 uppercase tracking-wider">{t("quickAccess")}</h4>
             <div className="flex flex-col gap-2 sm:gap-3">
               <a href="#top" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
-                Sobre Mí
+                {t("aboutFooter")}
               </a>
               <a href="#mas-sobre-mi" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
-                Más Sobre Mí
+                {t("moreAbout")}
               </a>
               <a href="#experiencia" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
-                Experiencia
+                {t("experience")}
               </a>
               <a href="#tecnologias" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
-                Tecnologías
+                {t("technologies")}
               </a>
               <a href="#proyectos" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
-                Proyectos
+                {t("projects")}
               </a>
             </div>
           </div>
 
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="text-white font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-5 uppercase tracking-wider text-center sm:text-left">Contáctame</h4>
+            <h4 className="text-white font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-5 uppercase tracking-wider text-center sm:text-left">{t("contactMe")}</h4>
             <div className="flex gap-3 sm:gap-4 md:gap-5">
               <button
                 onClick={handleEmailClick}
@@ -115,10 +117,10 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 md:gap-5 text-xs sm:text-sm md:text-base">
           <p className="text-gray-400 m-0 text-center md:text-left">
-            © {new Date().getFullYear()} Patricia Álvarez. Todos los derechos reservados.
+            © {new Date().getFullYear()} Patricia Álvarez. {t("rights")}
           </p>
           <p className="text-gray-400 m-0 flex items-center gap-2">
-            Hecho con
+            {t("builtWith")}
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-pink-light animate-pulse" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
             </svg>
@@ -129,7 +131,7 @@ export default function Footer() {
 
       {emailCopied && (
         <div className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 bg-pink-light text-ink px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg shadow-2xl animate-bounce z-50 font-semibold text-xs sm:text-sm md:text-base">
-          <i className="fa-solid fa-check mr-1 sm:mr-2"></i>Email copiado al portapapeles!
+          <i className="fa-solid fa-check mr-1 sm:mr-2"></i>{t("emailCopied")}
         </div>
       )}
     </footer>

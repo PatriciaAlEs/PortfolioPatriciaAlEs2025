@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useTranslation from "../hooks/useTranslation.jsx";
+import LanguageSwitcher from "./LanguageSwitcher.jsx";
 
 export default function Navbar() {
   const { store, dispatch } = useGlobalReducer();
+  const { t } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -38,20 +41,21 @@ export default function Navbar() {
 
         {/* Links / acciones */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <LanguageSwitcher />
           {!store.user ? (
             <>
               <button
                 className="group relative px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 border-2 border-green-hero text-green-hero bg-transparent font-bold rounded-lg hover:bg-green-hero hover:text-white transition-all duration-300 overflow-hidden text-xs sm:text-sm md:text-base"
                 onClick={() => dispatch({ type: "openAuth", mode: "login" })}
               >
-                <span className="relative z-10"><span className="hidden sm:inline">Iniciar sesión</span><span className="sm:hidden">Login</span></span>
+                <span className="relative z-10"><span className="hidden sm:inline">{t("login")}</span><span className="sm:hidden">Login</span></span>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-hero to-green-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
               <button
                 className="group relative px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-green-hero to-green-dark text-white font-bold rounded-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden text-xs sm:text-sm md:text-base"
                 onClick={() => dispatch({ type: "openAuth", mode: "register" })}
               >
-                <span className="relative z-10">Registro</span>
+                <span className="relative z-10">{t("register")}</span>
                 <div className="absolute inset-0 bg-gradient-to-l from-pink-light to-green-hero opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </>
@@ -84,7 +88,7 @@ export default function Navbar() {
                       setDropdownOpen(false);
                     }}
                   >
-                    Cerrar sesión
+                    {t("logout")}
                   </button>
                 </div>
               )}

@@ -1,9 +1,11 @@
 // TechGrid.jsx
 import { useEffect, useRef, useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useTranslation from "../hooks/useTranslation.jsx";
 
 const TechGrid = () => {
   const { store, actions } = useGlobalReducer();
+  const { t } = useTranslation();
   const [visibleCards, setVisibleCards] = useState([]);
   const sectionRef = useRef(null);
 
@@ -40,7 +42,7 @@ const TechGrid = () => {
   return (
     <section ref={sectionRef} id="tecnologias" className="my-12 px-4">
       <div className="container-narrow bg-white/8 backdrop-blur-lg rounded-3xl shadow-[0_18px_55px_rgba(0,0,0,0.16)] border border-white/10 p-6 sm:p-8">
-        <h2 className="section-title mb-8 text-center">TECNOLOGÍAS</h2>
+        <h2 className="section-title mb-8 text-center">{t("technologies")}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
           {store.techs.map((t, index) => (
             <div

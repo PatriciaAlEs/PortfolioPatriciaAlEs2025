@@ -1,8 +1,10 @@
 // ProjectDetailModal.jsx
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useProjectTranslation from "../hooks/useProjectTranslation.jsx";
 
 export default function ProjectDetailModal() {
   const { store, dispatch } = useGlobalReducer();
+  const { getProjectDescription } = useProjectTranslation();
   const project = store.projects.find(p => p.id === store.ui.projectOpen);
   const open = Boolean(project);
 
@@ -19,7 +21,7 @@ export default function ProjectDetailModal() {
           onClick={e => e.stopPropagation()}
         >
           <div className="modal-content p-4 rounded-4">
-            
+
             {/* Header */}
             <div className="modal-header border-0">
               <h5 className="modal-title">{project?.title}</h5>
@@ -48,16 +50,16 @@ export default function ProjectDetailModal() {
                   <p>
                     {project.title === "Hooboo" ? (
                       <>
-                        <strong>Descripción del Proyecto:</strong> HooBoo es una plataforma interactiva diseñada para conectar a lectores y escritores a través de una experiencia social centrada en la literatura. Los usuarios pueden explorar libros, compartir reseñas y conectarse con otros lectores, disfrutando de un diseño atractivo y adaptable.<br/><br/>
+                        <strong>Descripción del Proyecto:</strong> HooBoo es una plataforma interactiva diseñada para conectar a lectores y escritores a través de una experiencia social centrada en la literatura. Los usuarios pueden explorar libros, compartir reseñas y conectarse con otros lectores, disfrutando de un diseño atractivo y adaptable.<br /><br />
 
-                        <strong>Motivación e Historia:</strong> La idea de HooBoo surgió para ofrecer una red social exclusiva para libros, con registro, publicaciones, comentarios y feed personalizado. Queríamos combinar la experiencia visual de redes como Instagram con la literatura.<br/><br/>
+                        <strong>Motivación e Historia:</strong> La idea de HooBoo surgió para ofrecer una red social exclusiva para libros, con registro, publicaciones, comentarios y feed personalizado. Queríamos combinar la experiencia visual de redes como Instagram con la literatura.<br /><br />
 
-                        <strong>Funcionalidades:</strong> Explorar libros, interacción social (favoritos, comentarios), personalización de perfil y modo claro/oscuro, sistema de calificación, login y registro, vista para usuarios no registrados y registrados con opciones diferenciadas.<br/><br/>
+                        <strong>Funcionalidades:</strong> Explorar libros, interacción social (favoritos, comentarios), personalización de perfil y modo claro/oscuro, sistema de calificación, login y registro, vista para usuarios no registrados y registrados con opciones diferenciadas.<br /><br />
 
                         <strong>Tecnologías:</strong> Google Books API, Commento, CHATRA, Bootstrap, CSS, Bases de datos de usuarios, libros y calificaciones.
                       </>
                     ) : (
-                      project.long_desc
+                      getProjectDescription(project.id, "long_desc") || project.long_desc
                     )}
                   </p>
 

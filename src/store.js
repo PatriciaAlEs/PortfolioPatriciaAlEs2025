@@ -5,6 +5,7 @@ export const initialStore = {
   baseURL: import.meta.env.VITE_API_URL || "http://127.0.0.1:5000/api",
   token: localStorage.getItem("token") || null,
   user: JSON.parse(localStorage.getItem("user") || "null"),
+  language: localStorage.getItem("language") || "es",
   techs: [],
   projects: [],
   ui: { cvOpen: false, authOpen: false, authMode: "register", projectOpen: null, contactOpen: false }
@@ -14,6 +15,9 @@ export function storeReducer(state, action) {
   switch (action.type) {
     case "setTechs": return { ...state, techs: action.payload };
     case "setProjects": return { ...state, projects: action.payload };
+    case "setLanguage":
+      localStorage.setItem("language", action.payload);
+      return { ...state, language: action.payload };
     case "openCV": return { ...state, ui: { ...state.ui, cvOpen: true } };
     case "closeCV": return { ...state, ui: { ...state.ui, cvOpen: false } };
     case "openAuth": return { ...state, ui: { ...state.ui, authOpen: true, authMode: action.mode || "register" } };

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import useTranslation from "../hooks/useTranslation.jsx";
 
 export default function ContactModal() {
     const { store, dispatch, actions } = useGlobalReducer();
+    const { t } = useTranslation();
     const [form, setForm] = useState({
         subject: "",
         message: ""
@@ -22,20 +24,20 @@ export default function ContactModal() {
 
         // Validación adicional
         if (!form.subject || form.subject.trim() === "") {
-            alert("Por favor selecciona un asunto");
+            alert(t("selectSubjectError"));
             setIsSubmitting(false);
             return;
         }
 
         if (!form.message || form.message.trim() === "") {
-            alert("Por favor escribe un mensaje");
+            alert(t("enterMessage"));
             setIsSubmitting(false);
             return;
         }
 
         try {
             await actions.sendContactMessage(form);
-            alert("¡Mensaje enviado correctamente! Te responderé pronto.");
+            alert(t("messageSentSuccess"));
             setForm({ subject: "", message: "" });
             dispatch({ type: "closeContact" });
         } catch (err) {
@@ -45,12 +47,12 @@ export default function ContactModal() {
             if (err.message.includes("Signature verification failed") ||
                 err.message.includes("Token has expired") ||
                 err.message.includes("Invalid token")) {
-                alert("Tu sesión ha expirado. Por favor, inicia sesión nuevamente.");
+                alert(t("sessionExpired"));
                 dispatch({ type: "logout" });
                 dispatch({ type: "closeContact" });
                 dispatch({ type: "openAuth", mode: "login" });
             } else {
-                alert(err.message || "Error al enviar el mensaje. Inténtalo de nuevo.");
+                alert(err.message || t("errorSendingMessage"));
             }
         } finally {
             setIsSubmitting(false);
@@ -60,7 +62,7 @@ export default function ContactModal() {
     if (!store.ui?.contactOpen) {
         return null;
     }
-    
+
 
     return (
         <>
@@ -69,7 +71,7 @@ export default function ContactModal() {
                 <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6" onClick={e => e.stopPropagation()}>
                     <div className="flex justify-between items-center mb-6">
                         <h2 className="text-2xl font-bold text-ink">
-                            Envíame un mensaje
+                            {t("sendMessage")}
                         </h2>
                         <button
                             className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
@@ -83,42 +85,42 @@ export default function ContactModal() {
 
                     <div className="mb-4 p-3 bg-gray-50 rounded-lg">
                         <p className="text-sm text-gray-600">
-                            <span className="font-medium">Enviando como:</span> {store.user?.name} ({store.user?.email})
+                            <span className="font-medium">{t("sendingAs")}</span> {store.user?.name} ({store.user?.email})
                         </p>
                     </div>
 
                     <form onSubmit={submit} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">{t("subject")}</label>
                             <select
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-hero focus:border-green-hero transition-colors duration-200"
                                 required
                                 value={form.subject}
                                 onChange={e => setForm({ ...form, subject: e.target.value })}
                             >
-                                <option value="">Selecciona un asunto</option>
-                                <option value="Oferta de trabajo">Oferta de trabajo</option>
-                                <option value="Proyecto freelance">Proyecto freelance</option>
-                                <option value="Colaboración">Colaboración</option>
-                                <option value="Consulta técnica">Consulta técnica</option>
-                                <option value="Feedback del portfolio">Feedback del portfolio</option>
-                                <option value="Otro">Otro</option>
+                                <option value="">{t("selectSubject")}</option>
+                                <option value={t("jobOffer")}>{t("jobOffer")}</option>
+                                <option value={t("freelanceProject")}>{t("freelanceProject")}</option>
+                                <option value={t("collaboration")}>{t("collaboration")}</option>
+                                <option value={t("technicalQuery")}>{t("technicalQuery")}</option>
+                                <option value={t("portfolioFeedback")}>{t("portfolioFeedback")}</option>
+                                <option value={t("other")}>{t("other")}</option>
                             </select>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">{t("message")}</label>
                             <textarea
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-hero focus:border-green-hero transition-colors duration-200 resize-none"
                                 required
                                 rows={5}
                                 value={form.message}
                                 onChange={e => setForm({ ...form, message: e.target.value })}
-                                placeholder="Describe tu consulta, proyecto o propuesta..."
+                                placeholder={t("messageDescription")}
                                 maxLength={1000}
                             />
                             <div className="text-xs text-gray-500 mt-1">
-                                {form.message.length}/1000 caracteres
+                                {form.message.length}/1000 {t("characters")}
                             </div>
                         </div>
 
@@ -134,10 +136,10 @@ export default function ContactModal() {
                                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                         </svg>
-                                        Enviando...
+                                        {t("sending")}
                                     </span>
                                 ) : (
-                                    "Enviar mensaje"
+                                    t("sendButton")
                                 )}
                             </button>
                         </div>
