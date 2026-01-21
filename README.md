@@ -1,73 +1,64 @@
-# WebApp Template with React JS
+# Portfolio Patricia Álvarez (ES/EN)
 
+Portfolio bilingüe con React + Vite (frontend) y Flask (backend) que muestra experiencia, proyectos, contacto y contenido exclusivo para usuarias registradas. Incluye conmutador de idioma (ES/EN), autenticación con JWT y persistencia de sesión, y modales con detalles de proyectos y CV.
 
-Used by 4Geeks.com and 4Geeks Academy students, this template helps to bootstrap your first multi-page web applications by integrating with React latest version, vercel deployments and [Vite](https://4geeks.com/lesson/intro-to-vite-module-bundler) for bundling.
+## Capturas
+- Home (ES): ![Home](src/img_readme/Home.png)
+- Home (EN, logueada): ![Home EN](src/img_readme/Home_ingles.png)
+- Home (EN, no logueada): ![Home EN no log](src/img_readme/Home_nolog_ingles.png)
+- Proyectos: ![Projects](src/img_readme/PRojects.png)
+- Tecnologías & footer: ![Tecnologías](src/img_readme/tecnologias_footer.png)
 
-### Getting stated:
+## Características principales
+- Bilingüe ES/EN con persistencia en `localStorage` y cambio en tiempo real.
+- Autenticación (registro/login) con JWT y modal de bienvenida tras registro.
+- Contenido extra solo para usuarias autenticadas (sección “Más sobre mí”).
+- Sección de proyectos con descripciones largas/cortas traducidas y modales con links a live/repo.
+- Modal de CV y modal de contacto con validaciones y feedback.
+- Diseño responsive con Tailwind + Bootstrap, animaciones suaves y confetti en acciones clave.
 
-> 📦 Make sure you are using at least node version 20.
+## Tecnologías
+- **Frontend:** React, Vite, TailwindCSS, Bootstrap, Context + useReducer, React Router (rutas), canvas-confetti.
+- **Backend:** Python, Flask, SQLAlchemy, PostgreSQL, JWT, gunicorn (deploy).
+- **Herramientas/DevOps:** npm, Vercel/Render, ESLint, PostCSS, New Relic opcional.
 
-1. Install the node package dependencies by typing: `$ npm install`
+## Estructura rápida
+- `src/components`: secciones y modales (Hero, Navbar, AuthModal, ContactModal, ProjectDetailModal, etc.).
+- `src/data/translations.js`: diccionario ES/EN centralizado.
+- `src/data/projectTranslations.js`: textos largos/cortos de proyectos por idioma.
+- `src/store.js` + `src/hooks/useGlobalReducer.jsx`: estado global y acciones (auth, UI, idioma).
+- `api/`: backend Flask (rutas públicas y auth, modelos, seed, extensiones, static).
+- `src/img_readme/`: capturas usadas en este README.
 
-2. Create a .env file by typing `$ cp .env.example .env`
+## Requisitos previos
+- Node 20+
+- Python 3.10+
+- PostgreSQL (para entorno local con backend).
 
-3. Start coding! and the vite dev server with live reload by typing: `$ npm run start`
+## Configuración rápida (dev)
+```bash
+# Frontend
+npm install
+cp .env.example .env   # ajusta VITE_API_URL si es necesario
+npm run dev             # Vite en http://localhost:3000 (o 3001 si está ocupado)
 
-
-### Styling
-
-You can update the `./index.css` or create new `.css` files and import them into your current css or js files depending on your needs.
-
-### Components
-
-Add more files into your `./src/components` or styles folder as you need them and import them into your current files as needed.
-
-💡Note: There is an example using the Context API inside `pages/demo.js`;
-
-### Pages
-
-Add more files into your `./js/pages` and import them in `./routes.jsx`.
-Each page must match at least one route inside `routes.jsx`
-
-### Centralized Store with useReducer
-
-This template comes with a centralized & general state that's shared with all pages and compoentes, we call it "the store".   
-
-The file `./src/store.js` has a default structure for the store, we encourage you to change it and adapt it to your data needs (for example, if you are doing a `Todo list` you will probably have a array of todos here).
-
-+ Learn [how the useReducer works](https://4geeks.com/lesson/optimize-react-components-usereducer).
-+ Read more about [implementing a global state with Context API](https://4geeks.com/lesson/context-api)
-+ Read more about [react hooks](https://content.breatheco.de/lesson/react-hooks-explained)
-
-The store `Provider` for this context is already set on `./src/main.jsx`. You can access the store from any component using the `useGlobalReducer` hook to get the `store` and `dispatcher`. Check `/views/demo.js` to see a demo. Here is a smaller sample:
-
-```jsx
-import useGlobalReducer from "./src/hooks/useGlobalReducer";
-
-const MyComponentSuper = () => {
-  //here you use the hook to get dispatcher and store
-  import { dispatch, store } = useGlobalReducer();
-
-  return <div>{/* you can use your actions or store inside the html */}</div>
-}
+# Backend
+cd api
+python -m venv venv && source venv/bin/activate  # en Windows: venv\Scripts\activate
+pip install -r requirements.txt
+flask run --host=127.0.0.1 --port=5000
 ```
 
-## Publish your website!
+## Scripts útiles
+- `npm run dev`: arranca frontend en modo desarrollo.
+- `npm run build`: build de producción Vite.
+- `npm run preview`: vista previa del build.
+- Backend: `python app.py` o `flask run` (en carpeta `api`).
 
-1. **Vercel:** The FREE recomended hosting provider is [vercel.com](https://vercel.com/), you can deploy in 1 minutes by typing the following 2 commands:
+## Notas de uso
+- El idioma se guarda en `localStorage` (`language`).
+- El token JWT y usuario se guardan en `localStorage`; el modal de bienvenida usa `sessionStorage` para mostrarse una sola vez tras registro/login.
+- El contenido extra y el modal de contacto requieren sesión iniciada.
 
-Login (you need to have an account):
-```sh
-$ npm i vercel -g && vercel login
-```
-Deploy:
-```sh
-$ vercel --prod
-```
-✎ Note: If you don't have an account just go to vercel.com, create a account and come back here.
-
-![Vercel example procedure to deploy](https://github.com/4GeeksAcademy/react-hello-webapp/blob/4b530ba091a981d3916cc6e960e370decaf2e234/docs/deploy.png?raw=true)
-
-## Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) and [CyberSecurity Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity).
+## Licencia
+MIT (ver `LICENSE`).
