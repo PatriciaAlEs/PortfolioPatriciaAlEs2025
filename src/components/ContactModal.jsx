@@ -11,16 +11,9 @@ export default function ContactModal() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    console.log("ContactModal render - contactOpen:", store.ui?.contactOpen);
-    console.log("Store user:", store.user);
-
     const submit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-
-        console.log("Formulario enviado:", form);
-        console.log("Subject:", form.subject, "tipo:", typeof form.subject);
-        console.log("Message:", form.message, "tipo:", typeof form.message);
 
         // Validación adicional
         if (!form.subject || form.subject.trim() === "") {
@@ -75,6 +68,8 @@ export default function ContactModal() {
                         </h2>
                         <button
                             className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                            type="button"
+                            aria-label={t("close")}
                             onClick={() => dispatch({ type: "closeContact" })}
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -21,13 +21,21 @@ export default function AuthModal() {
     <>
       <div className={`fixed inset-0 z-50 ${store.ui.authOpen ? "block" : "hidden"}`} onClick={() => dispatch({ type: "closeAuth" })}>
         <div className="flex items-center justify-center min-h-screen px-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6" onClick={e => e.stopPropagation()}>
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="auth-modal-title"
+            onClick={e => e.stopPropagation()}
+          >
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-ink">
+              <h2 id="auth-modal-title" className="text-2xl font-bold text-ink">
                 {mode === "register" ? t("createAccount") : t("login")}
               </h2>
               <button
                 className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                type="button"
+                aria-label={t("close")}
                 onClick={() => dispatch({ type: "closeAuth" })}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,6 +80,7 @@ export default function AuthModal() {
                   />
                   <button
                     type="button"
+                    aria-label={showPassword ? t("hidePassword") : t("showPassword")}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-xl hover:scale-110 transition-transform duration-200"
                     onClick={() => setShowPassword(!showPassword)}
                     title={showPassword ? t("hidePassword") : t("showPassword")}

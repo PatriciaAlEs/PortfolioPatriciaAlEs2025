@@ -1,17 +1,19 @@
 import Hero from "../components/Hero.jsx";
-import ContentsStrip from "../components/ContentsStrip.jsx";
 import Experience from "../components/Experience.jsx";
-import TechGrid from "../components/TechGrid.jsx";
 import ProjectsSection from "../components/ProjectsSection.jsx";
 import MoreAboutMe from "../components/MoreAboutMe.jsx";
+import CapabilitiesSection from "../components/CapabilitiesSection.jsx";
+import WorkProcess from "../components/WorkProcess.jsx";
+import AboutMe from "../components/AboutMe.jsx";
 
 export const Home = () => (
   <>
     <Hero />
-    <ContentsStrip />
-    <MoreAboutMe />
-    <Experience />
     <ProjectsSection />
-    <TechGrid />
+    <CapabilitiesSection />
+    <Experience />
+    <WorkProcess />
+    <AboutMe />
+    <MoreAboutMe />
   </>
 );

@@ -1,63 +1,36 @@
-import React, { useEffect, useRef, useState } from "react";
 import useTranslation from "../hooks/useTranslation.jsx";
 
-const AboutMe = () => {
-    const { t } = useTranslation();
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
+export default function AboutMe() {
+  const { t } = useTranslation();
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.2 }
-        );
+  const facets = [
+    ["§ 01", "fantasyReader", "chapterInProgress"],
+    ["§ 02", "filmAndSeries", "endlessList"],
+    ["§ 03", "catMother", "codeSupervisors"],
+    ["§ 04", "complexSystems", "conceptMaps"]
+  ];
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
-    return (
-        <section
-            ref={sectionRef}
-            id="sobre-mi"
-            className={`split my-4 transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                }`}
-        >
-            <div className="row g-0">
-
-
-                <div className="col-12 col-lg-5 left d-flex align-items-center justify-content-center">
-                    <div className="box w-100 text-center">
-                        <h2 className="section-title text-white m-0">{t("aboutMeTitle")}</h2>
-                    </div>
-                </div>
-
-
-                <div className="col-12 col-lg-7 right">
-                    <div className="box">
-                        <p className="mb-2">
-                            {t("aboutMePara1")}
-                        </p>
-                        <p className="mb-2">
-                            {t("aboutMePara2")}
-                        </p>
-                        <p className="mb-0">
-                            {t("aboutMePara3")}
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    );
-};
-
-export default AboutMe;
+  return (
+    <section id="sobre-mi" className="about-section">
+      <div className="page-shell about-section__grid">
+        <div className="about-section__main">
+          <p className="section-label">{t("aboutMe")}</p>
+          <span className="chapter-number">§ 01</span>
+          <h2>{t("aboutEditorialTitle")}</h2>
+          <p>{t("aboutEditorialBody")}</p>
+          <blockquote>{t("aboutEditorialQuote")}</blockquote>
+        </div>
+        <div className="about-facets">
+          <p className="section-label">{t("outsideEditor")}</p>
+          {facets.map(([number, title, note]) => (
+            <article key={number}>
+              <span>{number}</span>
+              <h3>{t(title)}</h3>
+              <p>{t(note)}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

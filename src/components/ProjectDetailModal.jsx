@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import useProjectTranslation from "../hooks/useProjectTranslation.jsx";
 import useTranslation from "../hooks/useTranslation.jsx";
@@ -7,10 +8,25 @@ export default function ProjectDetailModal() {
   const { getProjectDescription } = useProjectTranslation();
   const { t } = useTranslation();
   const project = store.projects.find((item) => item.id === store.ui.projectOpen);
+  const closeButtonRef = useRef(null);
+  const closeModal = useCallback(() => dispatch({ type: "closeProject" }), [dispatch]);
+
+  useEffect(() => {
+    if (!project) return undefined;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closeModal();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    closeButtonRef.current?.focus();
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeModal, project]);
 
   if (!project) return null;
-
-  const closeModal = () => dispatch({ type: "closeProject" });
 
   return (
     <>
@@ -26,7 +42,7 @@ export default function ProjectDetailModal() {
           <div className="modal-content p-2 sm:p-4 rounded-4">
             <div className="modal-header border-0">
               <h2 className="modal-title h4" id="project-modal-title">{project.title}</h2>
-              <button type="button" className="btn-close" aria-label={t("close")} onClick={closeModal} />
+              <button ref={closeButtonRef} type="button" className="btn-close" aria-label={t("close")} onClick={closeModal} />
             </div>
 
             <div className="modal-body">
