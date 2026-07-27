@@ -31,6 +31,61 @@ The hero was used as the focused region because it contains the most fidelity-se
 1. P2 — The first implementation used a pink status card while the source used a dark translucent panel.
    - Fix: changed the status surface to dark green with a subtle warm border and muted green status label.
    - Post-fix evidence: the final paired hero capture shows the status treatment aligned with the source.
+2. Second content and polish pass:
+   - Replaced the hero value proposition, capability labels, status message and personal statement in both languages.
+   - Added a one-pixel dusty-rose portrait frame with an 18 px outer radius while preserving the original crop and aspect ratio.
+   - Increased the status panel maximum width to 370 px so the longer message retains the established type size.
+   - Re-captured the implementation and compared it with the source hero in the same paired visual input; no new P0/P1/P2 drift was introduced.
+3. Hero status alignment pass:
+   - Replaced the personal statement in Spanish and English, including its repeated quote in the About section.
+   - Moved the status panel out of the portrait overlap and placed it 20 px below the image.
+   - Matched the image width exactly (432 px at the tested desktop viewport), with a 14 px card radius and no horizontal overflow.
+4. Reference/original scale comparison:
+   - Moved the desktop hero start from 148 px to 90 px to match the reference image.
+   - Reduced the header height from 84 px to 64 px and aligned its content to the same 1200 px page grid.
+   - Capped the display heading at 112 px and the lead copy at 18 px so they do not grow beyond the reference proportions on wide screens.
+   - Reduced the status card to 110 px high at the tested viewport while preserving the new longer status message.
+   - Final browser measurements: image top 90 px, image/card gap 20 px and horizontal overflow 0 px.
+5. Detailed reference fidelity pass:
+   - Added the short editorial rule before the hero eyebrow.
+   - Changed desktop navigation labels from uppercase utility text to the title-case, lighter treatment used by the reference.
+   - Reduced capability-chip and CTA height; restored the directional and download icons using the project's existing Font Awesome source.
+   - Matched the reference header controls with a restrained square language state and filled rose CV action.
+   - Narrowed the lead-copy measure to 570 px for the same wrapping rhythm as the reference while retaining the approved new wording.
+6. Full-section Figma alignment pass:
+   - Rebuilt Projects as a dark two-column ReadPp case study using the real `Mockup_ReadPp.png` asset.
+   - Converted Capabilities into four bordered horizontal cards matching the reference hierarchy.
+   - Converted Experience into a dark vertical timeline with contained role cards.
+   - Compacted the Process selector and detail panel to the reference proportions.
+   - Moved About to the dark canvas and presented its facets as bordered cards.
+   - Simplified Contact to the reference's single-column editorial hierarchy.
+   - Compared every section against the Figma reference at the same desktop viewport; no actionable P0, P1 or P2 differences remain.
+7. Project-content and hierarchy pass:
+   - Replaced HooBoo with ProfileStack using its public repository documentation as the verified source.
+   - Expanded ReadPp with its verified product scope, offline/local persistence, Supabase synchronisation, AI architecture, observability and PWA/APK availability.
+   - Changed all project actions to direct GitHub repository links.
+   - Enlarged the ReadPp mockup, reduced its surrounding empty space and added restrained rose accents.
+   - Extended section headings beyond their content column and separated capability technologies into individual pills.
+   - Verified Spanish and English states, desktop and 390 px mobile layouts, repository targets, console output and horizontal overflow.
+8. ReadPp rapid-scan redesign:
+   - Replaced repeated prose with concise “What it does” and “What I built” lists.
+   - Kept the two-column desktop composition and placed the real mockup above a compact current-status card.
+   - Shortened the development badge to “Evolving product” and retained stack, PWA, APK and repository affordances.
+   - Preserved the architecture explorer and enlarged-image dialog.
+   - Verified the 6 product points, 8 build points and 4 status points in the rendered DOM.
+   - Verified desktop balance, mobile information-first stacking, English copy, modal keyboard close and zero horizontal overflow.
+9. Editorial typography system:
+   - Identified the personal hero phrase as Playfair Display italic and formalised it as the semantic `--editorial-font` token plus reusable `.editorial-copy` class.
+   - Applied it only to the personal hero note, About narrative/quote/facet notes and authenticated personal stories.
+   - Preserved DM Sans for technical descriptions, lists, navigation, controls, labels, statuses and professional content.
+   - Verified Playfair Display loaded successfully, Spanish accented characters rendered, computed size remained 16 px with generous line-height, and desktop/mobile layouts had no horizontal overflow.
+10. Section-width and project-detail pass:
+   - Standardised major headings and section content on the shared 1200 px page shell, removing narrow heading constraints that visually pushed content to the left.
+   - Moved the ReadPp PWA and Android APK availability into the same content column as the GitHub repository action.
+   - Added separate, bilingual Stack and Skills groups to PDF Translator, TimeToTask and ProfileStack.
+   - Preserved the authenticated “Más sobre mí” area as three independent cards and kept its existing login gate.
+   - No personal-story photographs are present in the current repository assets, so no unrelated or fabricated images were introduced.
+   - Directed lint and the production build completed successfully.
 
 ## Findings
 

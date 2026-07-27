@@ -13,9 +13,10 @@ export default function MoreAboutMe() {
         <h2>{t("moreAboutMeTitle")}</h2>
         <p>{t("exclusiveNote")}</p>
         <div className="exclusive-grid">
-          <article><span>01</span><h3>{t("hardcoreReader")}</h3><p>{t("readerDesc")}</p></article>
-          <article><span>02</span><h3>{t("catMom")}</h3><p>{t("catMomDesc")}</p></article>
-          <article><span>03</span><h3>{t("roots")}</h3><p>{t("rootsDesc")}</p></article>
+          <article><span>01</span><h3>{t("hardcoreReader")}</h3><p className="editorial-copy">{t("readerDesc")}</p></article>
+          <article><span>02</span><h3>{t("catMom")}</h3><p className="editorial-copy">{t("catMomDesc")}</p></article>
+          <article><span>03</span><h3>{t("sagaFan")}</h3><p className="editorial-copy">{t("sagaFanDesc")}</p></article>
+          <article><span>04</span><h3>{t("roots")}</h3><p className="editorial-copy">{t("rootsDesc")}</p></article>
         </div>
       </div>
     </section>

@@ -12,21 +12,26 @@ export default function Hero() {
     <section id="top" className="editorial-hero">
       <div className="page-shell editorial-hero__grid">
         <div className="hero-copy">
-          <p className="hero-copy__eyebrow">{t("heroEyebrow")}</p>
+          <div className="hero-copy__eyebrow">
+            <hr aria-hidden="true" />
+            <span>{t("heroEyebrow")}</span>
+          </div>
           <h1>Patricia <em>Álvarez</em></h1>
           <p className="hero-copy__value">{t("heroValue")}</p>
 
           <div className="hero-capabilities" aria-label={t("keyCapabilities")}>
-            {[t("keyCapabilities"), "Full Stack", t("appliedAI"), t("automation")].map((tag) => (
+            {[t("keyCapabilities"), t("productDevelopment"), t("fullStackEngineering"), t("aiAutomation")].map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
           </div>
 
           <div className="hero-actions">
             <button className="button-primary" type="button" onClick={() => navigate("proyectos")}>
-              {t("viewProjects")}
+              {t("viewProjects")}<i className="fa-solid fa-arrow-right" aria-hidden="true" />
             </button>
-            <a className="button-secondary" href={CV_DOWNLOAD_URL}>{t("downloadCV")}</a>
+            <a className="button-secondary" href={CV_DOWNLOAD_URL}>
+              <i className="fa-solid fa-download" aria-hidden="true" />{t("downloadCV")}
+            </a>
             <button className="button-secondary" type="button" onClick={() => navigate("contacto")}>
               {t("contactAction")}
             </button>
@@ -42,7 +47,7 @@ export default function Hero() {
           </aside>
         </figure>
 
-        <p className="hero-human-note">{t("humanNote")}</p>
+        <p className="hero-human-note editorial-copy">{t("humanNote")}</p>
       </div>
     </section>
   );

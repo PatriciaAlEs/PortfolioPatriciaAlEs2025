@@ -19,7 +19,7 @@ export default function ProjectsSection() {
   return (
     <section id="proyectos" className="projects-section">
       <div className="page-shell">
-        <SectionHeading eyebrow={t("featuredProjectsEyebrow")} title={t("productsThat")} accent={t("workForReal")} />
+        <SectionHeading eyebrow={t("featuredProjectsEyebrow")} title={t("ideasThat")} accent={t("becomeProducts")} />
         <FeaturedProject />
 
         <div className="secondary-projects">

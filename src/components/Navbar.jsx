@@ -31,16 +31,18 @@ export default function Navbar() {
         </button>
 
         <nav id="primary-navigation" className={`primary-nav ${menuOpen ? "primary-nav--open" : ""}`} aria-label={t("mainNavigation")}>
-          <button type="button" onClick={() => navigate("proyectos")}>{t("projects")}</button>
-          <button type="button" onClick={() => navigate("experiencia")}>{t("experience")}</button>
-          <button type="button" onClick={() => navigate("sobre-mi")}>{t("about")}</button>
-          <button type="button" onClick={() => navigate("contacto")}>{t("contact")}</button>
+          <button type="button" onClick={() => navigate("proyectos")}>{t("navProjects")}</button>
+          <button type="button" onClick={() => navigate("experiencia")}>{t("navExperience")}</button>
+          <button type="button" onClick={() => navigate("sobre-mi")}>{t("navAbout")}</button>
+          <button type="button" onClick={() => navigate("contacto")}>{t("navContact")}</button>
         </nav>
 
         <div className="header-actions">
           <span className="availability"><span aria-hidden="true" />{t("available")}</span>
           <LanguageSwitcher />
-          <a className="header-cv" href={CV_DOWNLOAD_URL}>{t("cvShort")}</a>
+          <a className="header-cv" href={CV_DOWNLOAD_URL}>
+            <i className="fa-solid fa-download" aria-hidden="true" />{t("cvShort")}
+          </a>
           {!store.user ? (
             <button className="account-action" type="button" onClick={() => dispatch({ type: "openAuth", mode: "login" })}>
               {t("login")}

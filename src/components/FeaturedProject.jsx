@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import useProjectTranslation from "../hooks/useProjectTranslation.jsx";
 import useTranslation from "../hooks/useTranslation.jsx";
 import readPpMockup from "../img_readme/Mockup_ReadPp.png";
 
@@ -12,45 +11,123 @@ const architecture = [
   ["Database / LLM", "architectureServices"]
 ];
 
+const productFeatures = [
+  "readPpDoesLibrary",
+  "readPpDoesSessions",
+  "readPpDoesInsights",
+  "readPpDoesSync",
+  "readPpDoesOffline",
+  "readPpDoesAssistant"
+];
+
+const buildScope = [
+  "readPpBuiltArchitecture",
+  "readPpBuiltFlutter",
+  "readPpBuiltRiverpod",
+  "readPpBuiltLocal",
+  "readPpBuiltSupabase",
+  "readPpBuiltModels",
+  "readPpBuiltMemory",
+  "readPpBuiltObservability"
+];
+
+const currentStatus = [
+  "readPpStatusFunctional",
+  "readPpStatusPwa",
+  "readPpStatusApk",
+  "readPpStatusNext"
+];
+
+const stackGroups = [
+  ["stackFrontend", ["Flutter", "Dart", "Riverpod", "Material 3", "Responsive UI"]],
+  ["stackBackendData", ["Supabase", "PostgreSQL", "Drift", "SQLite", "REST APIs"]],
+  ["stackAiDevelopment", ["OpenAI", "Gemini", "Prompt Engineering", "Context Management"], true],
+  ["stackProduct", ["UX Research", "Architecture", "Testing", "Observability", "PWA"]]
+];
+
 export default function FeaturedProject() {
-  const { store, dispatch } = useGlobalReducer();
-  const { getProjectDescription } = useProjectTranslation();
+  const { store } = useGlobalReducer();
   const { t } = useTranslation();
   const [activeLayer, setActiveLayer] = useState(0);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const previewTriggerRef = useRef(null);
+  const closePreviewRef = useRef(null);
   const project = store.projects.find((item) => item.id === 10);
+
+  useEffect(() => {
+    if (!isPreviewOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const previewTrigger = previewTriggerRef.current;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setIsPreviewOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    closePreviewRef.current?.focus();
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+      previewTrigger?.focus();
+    };
+  }, [isPreviewOpen]);
 
   if (!project) return null;
 
   return (
     <article className="featured-project">
-      <div className="featured-project__intro">
-        <div>
+      <div className="featured-project__showcase">
+        <div className="featured-project__content">
           <div className="project-kicker">
             <span>ReadPp</span>
             <span>{t("activeDevelopment")}</span>
           </div>
           <h3>ReadPp <em>+ LibrerIA</em></h3>
-          <p className="featured-project__lead">{getProjectDescription(10, "short_desc") || project.short_desc}</p>
+          <p className="featured-project__lead">{t("readPpBrief")}</p>
+
+          <div className="featured-project__lists">
+            <section>
+              <h4>{t("whatItDoes")}</h4>
+              <ul>{productFeatures.map((item) => <li key={item}>{t(item)}</li>)}</ul>
+            </section>
+            <section>
+              <h4>{t("whatIBuilt")}</h4>
+              <ul>{buildScope.map((item) => <li key={item}>{t(item)}</li>)}</ul>
+            </section>
+          </div>
+          <a href={project.repo_url} target="_blank" rel="noopener noreferrer" className="featured-project__repo">
+            {t("viewRepo")} <i className="fa-brands fa-github" aria-hidden="true" />
+          </a>
+          <div className="featured-project__availability" aria-label={t("availabilityLabel")}>
+            <a href={project.live_url} target="_blank" rel="noopener noreferrer">PWA</a>
+            <span>APK Android</span>
+          </div>
+
         </div>
 
-        <div className="project-facts">
-          <div>
-            <span>{t("problemLabel")}</span>
-            <p>{t("readPpProblem")}</p>
+        <aside className="featured-project__visual">
+          <figure className="featured-project__media">
+            <button ref={previewTriggerRef} type="button" onClick={() => setIsPreviewOpen(true)} aria-label={t("expandReadPpMockup")}>
+              <img src={readPpMockup} alt={t("readPpMockupAlt")} />
+              <span><i className="fa-solid fa-expand" aria-hidden="true" /> {t("expandImage")}</span>
+            </button>
+          </figure>
+          <section className="featured-project__status">
+            <h4>{t("currentStatus")}</h4>
+            <ul>{currentStatus.map((item) => <li key={item}>{t(item)}</li>)}</ul>
+          </section>
+          <div className="featured-project__stack">
+            <span>{t("techStack")}</span>
+            <div className="featured-project__stack-groups">
+              {stackGroups.map(([title, items, planned]) => (
+                <section key={title} className={planned ? "is-planned" : ""}>
+                  <h5>{t(title)}</h5>
+                  <div>{items.map((item) => <span key={item}>{item}</span>)}</div>
+                </section>
+              ))}
+            </div>
           </div>
-          <div>
-            <span>{t("roleLabel")}</span>
-            <p>{t("readPpRole")}</p>
-          </div>
-          <button type="button" onClick={() => dispatch({ type: "openProject", payload: project.id })}>
-            {t("viewCaseStudy")}
-          </button>
-        </div>
+        </aside>
       </div>
-
-      <figure className="featured-project__media">
-        <img src={readPpMockup} alt={t("readPpMockupAlt")} />
-      </figure>
 
       <div className="architecture-explorer">
         <div className="architecture-explorer__heading">
@@ -73,6 +150,15 @@ export default function FeaturedProject() {
         </div>
         <p className="architecture-detail">{t(architecture[activeLayer][1])}</p>
       </div>
+
+      {isPreviewOpen && (
+        <div className="image-lightbox" role="dialog" aria-modal="true" aria-label={t("readPpMockupAlt")} onClick={() => setIsPreviewOpen(false)}>
+          <button ref={closePreviewRef} type="button" className="image-lightbox__close" onClick={() => setIsPreviewOpen(false)} aria-label={t("closeImagePreview")}>
+            <i className="fa-solid fa-xmark" aria-hidden="true" />
+          </button>
+          <img src={readPpMockup} alt={t("readPpMockupAlt")} onClick={(event) => event.stopPropagation()} />
+        </div>
+      )}
     </article>
   );
 }
