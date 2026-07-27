@@ -17,11 +17,15 @@ export default function AddToLibrary() {
 
   return (
     <div className={`add-to-library${saved ? " is-saved" : ""}${reducedMotion ? " is-reduced" : ""}`}>
-      <button type="button" onClick={togglePortfolio} aria-pressed={saved}>
+      <button
+        type="button"
+        onClick={togglePortfolio}
+        aria-pressed={saved}
+        aria-label={t(saved ? "removeFromLibrary" : "addToLibrary")}
+        title={t(saved ? "removeFromLibrary" : "addToLibrary")}
+      >
         <span className="add-to-library__book" aria-hidden="true">P</span>
-        <span>{saved ? t("inMyLibrary") : t("addToLibrary")}</span>
       </button>
-      {saved && <p aria-live="polite">{t("librarySaved")}</p>}
     </div>
   );
 }
