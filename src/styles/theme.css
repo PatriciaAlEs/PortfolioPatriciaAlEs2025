@@ -1542,7 +1542,8 @@ footer {
 .page-reveal--modal img { max-width: 100%; max-height: 88vh; }
 
 .add-to-library {
-  margin-top: 28px;
+  margin: 0;
+  height: 0;
 }
 .contact-section .page-shell { position: relative; }
 .add-to-library button {
@@ -1550,8 +1551,7 @@ footer {
   align-items: center;
   gap: 12px;
   border: 0;
-  border-bottom: 1px solid rgba(226,202,217,.36);
-  padding: 6px 0;
+  padding: 0;
   color: rgba(247,245,242,.7);
   background: transparent;
   font-size: .72rem;
