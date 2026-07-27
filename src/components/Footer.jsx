@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useTranslation from "../hooks/useTranslation.jsx";
+import AddToLibrary from "./AddToLibrary.jsx";
 
 const EMAIL = "patriciaalvarezestevez@gmail.com";
 const CV_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1Yh7NyD3bcU2Tcn1CEWWoDOTOCIVgPnnO";
@@ -37,6 +38,7 @@ export default function Footer() {
               <a href={CV_DOWNLOAD_URL}>{t("downloadCV")}</a>
               <a href={CV_VIEW_URL} target="_blank" rel="noopener noreferrer">{t("openCV")}</a>
             </div>
+            <AddToLibrary />
           </div>
         </div>
         <div className="footer-line">

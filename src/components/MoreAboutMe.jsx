@@ -10,7 +10,7 @@ export default function MoreAboutMe() {
   return (
     <section id="mas-sobre-mi" className="exclusive-section" aria-label={t("moreAboutMeTitle")}>
       <div className="page-shell">
-        <h2>{t("moreAboutMeTitle")}</h2>
+        <h2 className="editorial-bookmark-title">{t("moreAboutMeTitle")}</h2>
         <p>{t("exclusiveNote")}</p>
         <div className="exclusive-grid">
           <article><span>01</span><h3>{t("hardcoreReader")}</h3><p className="editorial-copy">{t("readerDesc")}</p></article>

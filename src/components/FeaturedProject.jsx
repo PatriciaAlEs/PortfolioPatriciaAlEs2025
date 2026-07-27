@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import useTranslation from "../hooks/useTranslation.jsx";
 import readPpMockup from "../img_readme/Mockup_ReadPp.png";
+import EditorialNote from "./EditorialNote.jsx";
+import PageReveal from "./PageReveal.jsx";
 
 const architecture = [
   ["Interface", "architectureInterface"],
@@ -104,7 +106,8 @@ export default function FeaturedProject() {
             <span>ReadPp</span>
             <span>{t("activeDevelopment")}</span>
           </div>
-          <h3>ReadPp <em>+ LibrerIA</em></h3>
+          <h3 className="editorial-bookmark-title">ReadPp <em>+ LibrerIA</em></h3>
+          <EditorialNote textKey="noteLibrerIa" />
           <p className="featured-project__lead">{t("readPpBrief")}</p>
 
           <div className="featured-project__lists">
@@ -124,6 +127,7 @@ export default function FeaturedProject() {
             <a href={project.live_url} target="_blank" rel="noopener noreferrer">PWA</a>
             <span>APK Android</span>
           </div>
+          <EditorialNote textKey="notePwa" />
 
         </div>
 
@@ -138,6 +142,7 @@ export default function FeaturedProject() {
             <h4>{t("currentStatus")}</h4>
             <ul>{currentStatus.map((item) => <li key={item}>{t(item)}</li>)}</ul>
           </section>
+          <EditorialNote textKey="noteReaders" />
           <div className="featured-project__stack">
             <span>{t("techStack")}</span>
             <div className="featured-project__stack-groups">
@@ -156,6 +161,7 @@ export default function FeaturedProject() {
         <div className="architecture-explorer__heading">
           <p>ReadPp + LibrerIA</p>
           <h4>{t("layeredArchitecture")}</h4>
+          <EditorialNote textKey="noteArchitecture" />
         </div>
         <div className="architecture-rail" role="tablist" aria-label={t("layeredArchitecture")} style={{ "--active-layer": activeLayer }}>
           {architecture.map(([label], index) => (
@@ -179,7 +185,9 @@ export default function FeaturedProject() {
           <button ref={closePreviewRef} type="button" className="image-lightbox__close" onClick={() => setIsPreviewOpen(false)} aria-label={t("closeImagePreview")}>
             <i className="fa-solid fa-xmark" aria-hidden="true" />
           </button>
-          <img src={readPpMockup} alt={t("readPpMockupAlt")} onClick={(event) => event.stopPropagation()} />
+          <PageReveal className="page-reveal--modal">
+            <img src={readPpMockup} alt={t("readPpMockupAlt")} onClick={(event) => event.stopPropagation()} />
+          </PageReveal>
         </div>
       )}
     </article>

@@ -58,6 +58,10 @@ export default function MotionController() {
         if (reducedMotion) element.classList.add("is-visible");
         else revealObserver.observe(element);
       });
+
+      titles.forEach((element) => {
+        if (!element.closest(".scroll-reveal")) element.classList.add("is-visible");
+      });
     };
 
     if (!reducedMotion) {
