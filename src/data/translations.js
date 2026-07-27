@@ -7,27 +7,38 @@ export const translations = {
 
         // Hero
         heroTitle: "Patricia Álvarez",
-        heroSubtitle: "Full-Stack Developer & QA Tester — React · Flask · SQLAlchemy · JWT · WooCommerce",
-        heroPara1: "¡Hola! Soy Patricia, desarrolladora full-stack, QA tester y Mentora Técnica en 4Geeks Academy.",
-        heroPara2: "Me paso el día entre React y Flask, montando aplicaciones que resuelvan problemas reales. Me gusta que el código sea limpio y fácil de mantener (porque sé que alguien lo va a leer después, probablemente yo misma). También trabajo con bases de datos, JWT, WooCommerce... y como QA tester me aseguro de que todo funcione sin sorpresas.",
-        heroPara3: "Lo que más me motiva es ver ideas convertirse en productos que la gente usa de verdad. Si algo no sirve para resolver un problema o hacer la vida más fácil, ¿para qué programarlo?",
+        heroSubtitle: "Full Stack Developer con IA",
+        heroStack: "Flutter · React · TypeScript · Python · Automatización · IA aplicada",
+        heroPara1: "Desarrollo productos digitales de principio a fin: desde interfaces cuidadas hasta APIs, autenticación y persistencia.",
+        heroPara2: "Trabajo con Flutter, React, Python y automatización, integrando inteligencia artificial cuando aporta una mejora real al producto.",
+        heroPara3: "También soy Mentora Técnica y Desarrolladora de Proyectos Formativos en 4Geeks Academy, donde acompaño procesos de aprendizaje mediante code review, debugging y validación funcional.",
         downloadCV: "Descargar CV",
+        openCV: "Abrir CV",
         exclusiveContent: "Ver Contenido Extra",
 
         // Sections
-        experience: "EXPERIENCIA PROFESIONAL",
-        mentorTitle: "Mentora Técnica",
-        mentorYear: "2024 — actual",
-        mentorDesc: "Ayudo a estudiantes que están aprendiendo a programar desde cero. Doy mentorías, resuelvo bugs que parecen imposibles (spoiler: siempre es un punto y coma), reviso código y les ayudo a desplegar sus proyectos. Lo mejor de todo: ver cómo pasan de \"no entiendo nada\" a \"¡ya funciona!\"",
-        qaTesterTitle: "QA Tester",
-        qaTesterYear: "2024 — actual",
-        qaTesterDesc: "Reviso código de estudiantes con ojo crítico: busco bugs, pruebo funcionalidades, verifico que todo funcione como debe y sugiero mejoras. Básicamente, soy la persona que encuentra los errores antes de que lleguen a producción. Me encanta ese momento en el que encuentras el bug escondido que nadie más vio.",
-        freelanceTitle: "Freelance · E-commerce",
-        freelanceYear: "2024 — actual",
-        freelanceDesc: "Creo tiendas online para clientes que necesitan vender sus productos en internet. Uso WordPress y WooCommerce (sí, a veces toca PHP), configuro pasarelas de pago, optimizo velocidad y me aseguro de que todo se vea bien en móviles. Básicamente, que la gente pueda comprar sin frustrarse por el camino.",
-        teamManagementTitle: "Gestión de Equipos",
-        teamManagementYear: "2015 — 2023",
-        teamManagementDesc: "Años liderando equipos me enseñaron que la clave está en la comunicación clara, saber priorizar cuándo y qué es urgente, y mantener al equipo motivado incluso bajo presión. Esas son exactamente las habilidades que busco aplicar como PMI en equipos de desarrollo: coordinar sprints, traducir necesidades técnicas al lenguaje del cliente, y asegurarme de que el equipo tenga lo que necesita para entregar buenos productos sin quemarse en el camino.",
+        accessProTitle: "Full Stack Developer con IA · Acceso Pro",
+        accessProYear: "15 Jul 2026 — Actualidad · Jornada parcial",
+        accessProDesc: "Incorporación reciente centrada en automatizaciones con n8n, integración de modelos de lenguaje y flujos de trabajo con Google Drive.",
+        mentorTitle: "Mentora Técnica & Desarrolladora de Proyectos Formativos · 4Geeks Academy",
+        mentorYear: "Feb 2025 — Actualidad",
+        mentorDesc: "Desarrollo proyectos y ejercicios técnicos para la práctica de JavaScript, React, Python y Flask. Realizo mentoría técnica, code review, debugging y validación funcional con foco en estructura, legibilidad y mantenibilidad.",
+        careerTitle: "Frontend Developer · Career Insights",
+        careerYear: "Jun 2025 — Dic 2025",
+        careerDesc: "Desarrollo de componentes React con TypeScript y Tailwind CSS, integración con APIs REST e interfaces responsive con estados claros.",
+        entusiasmoTitle: "Desarrolladora WordPress & WooCommerce · Entusiasmao",
+        entusiasmoYear: "Jun 2025 — Jul 2025",
+        entusiasmoDesc: "Diseño y desarrollo web, estructura e identidad visual del sitio y configuración de una tienda online personalizada.",
+        managementTitle: "Manager · Team Coordination · PARTYFIESTA",
+        managementYear: "Jun 2018 — Dic 2023",
+        managementDesc: "Liderazgo y coordinación de un equipo de seis personas, planificación de tareas, seguimiento de objetivos y resolución de incidencias.",
+        educationTitle: "FORMACIÓN",
+        fsAiCourse: "Full Stack Development with AI",
+        fsAiCourseDate: "Ene 2026 — Mar 2026",
+        aiEngineeringCourse: "AI Engineering (en curso)",
+        aiEngineeringCourseDate: "Ene 2026 — Actualidad",
+        fullStackCourse: "Full Stack Development",
+        fullStackCourseDate: "Ene 2024 — Dic 2024",
 
         // About Me
         aboutMeTitle: "SOBRE MÍ",
@@ -38,14 +49,17 @@ export const translations = {
         // Contact
         contactTitle: "TRABAJEMOS JUNTAS",
         contactDesc: "Tengo una propuesta interesante o simplemente quiero conocerte",
-        sendMessage: "Enviar mensaje",
 
         // Projects
         projectsTitle: "PROYECTOS",
-        projectsDesc: "Explora algunos de los proyectos que he desarrollado; en \"Ver más\" tendrás acceso al live y al repo en GitHub.",
+        projectsDesc: "Productos y proyectos donde conecto interfaz, datos, backend e IA aplicada.",
         viewMore: "Ver más",
         viewLive: "Ver live",
         viewRepo: "Ver repo",
+        featuredProject: "Proyecto destacado",
+        complementaryProject: "Proyecto complementario",
+        techStack: "Stack principal",
+        close: "Cerrar",
 
         // Navigation & Sections
         about: "SOBRE MÍ",
@@ -55,12 +69,12 @@ export const translations = {
         contact: "CONTACTO",
 
         // Modals
-        cvTitle: "CV (resumen)",
+        cvTitle: "Currículum",
         stack: "Stack",
-        stackValue: "React, Flask, SQLAlchemy, JWT, WordPress/WooCommerce",
-        experienceValue: "Mentora Técnica en 4Geeks, QA Tester, proyectos freelance e-commerce",
+        stackValue: "Flutter, React, TypeScript, Python, Flask, Supabase e IA aplicada",
+        experienceValue: "Full Stack Developer con IA y Mentora Técnica en 4Geeks Academy",
         focus: "Foco",
-        focusValue: "buenas prácticas, DX, accesibilidad y rendimiento",
+        focusValue: "producto de extremo a extremo, automatización, mantenibilidad y calidad técnica",
 
         // Contact Modal
         sendMessage: "Envíame un mensaje",
@@ -85,7 +99,7 @@ export const translations = {
         errorSendingMessage: "Error al enviar el mensaje. Inténtalo de nuevo.",
 
         // Footer
-        footerDesc: "Desarrolladora Full Stack creando experiencias web que funcionan de verdad.",
+        footerDesc: "Full Stack Developer con IA creando productos digitales de extremo a extremo.",
         quickAccess: "Accesos Rápidos",
         aboutFooter: "Sobre Mí",
         moreAbout: "Más Sobre Mí",
@@ -97,14 +111,12 @@ export const translations = {
 
         // Auth Modal
         createAccount: "Crear cuenta",
-        login: "Iniciar sesión",
         name: "Nombre",
         email: "Email",
         password: "Contraseña",
         type: "Tipo",
         individual: "Particular",
         company: "Empresa",
-        register: "Registrarme",
         enter: "Entrar",
         haveAccount: "Tengo cuenta",
         noAccount: "Crear cuenta",
@@ -144,27 +156,38 @@ export const translations = {
 
         // Hero
         heroTitle: "Patricia Álvarez",
-        heroSubtitle: "Full-Stack Developer & QA Tester — React · Flask · SQLAlchemy · JWT · WooCommerce",
-        heroPara1: "Hi! I'm Patricia, a full-stack developer, QA tester, and Technical Mentor at 4Geeks Academy.",
-        heroPara2: "I spend my days between React and Flask, building applications that solve real problems. I love clean, maintainable code (because I know someone will read it later, probably me). I also work with databases, JWT, WooCommerce... whatever it takes to make things work. As a QA tester, I make sure everything runs smoothly without surprises.",
-        heroPara3: "What drives me most is seeing ideas turn into products that people actually use. If something doesn't solve a problem or make life easier, why build it?",
+        heroSubtitle: "Full Stack Developer with AI",
+        heroStack: "Flutter · React · TypeScript · Python · Automation · Applied AI",
+        heroPara1: "I build digital products end to end, from thoughtful interfaces to APIs, authentication and persistence.",
+        heroPara2: "I work with Flutter, React, Python and automation, integrating artificial intelligence when it provides a real product improvement.",
+        heroPara3: "I am also a Technical Mentor and Training Project Developer at 4Geeks Academy, supporting learning through code review, debugging and functional validation.",
         downloadCV: "Download CV",
+        openCV: "Open CV",
         exclusiveContent: "View Extra Content",
 
         // Sections
-        experience: "PROFESSIONAL EXPERIENCE",
-        mentorTitle: "Technical Mentor",
-        mentorYear: "2024 — present",
-        mentorDesc: "I help students who are learning to code from scratch. I provide mentoring, solve bugs that seem impossible (spoiler: it's always a semicolon), review code, and help them deploy their projects. The best part: seeing them go from \"I don't understand anything\" to \"it works!\"",
-        qaTesterTitle: "QA Tester",
-        qaTesterYear: "2024 — present",
-        qaTesterDesc: "I review student code with a critical eye: I look for bugs, test functionality, verify that everything works as it should, and suggest improvements. Basically, I'm the person who finds errors before they reach production. I love that moment when you find the hidden bug that no one else saw.",
-        freelanceTitle: "Freelance · E-commerce",
-        freelanceYear: "2024 — present",
-        freelanceDesc: "I create online stores for clients who need to sell their products on the internet. I use WordPress and WooCommerce (yes, sometimes PHP is involved), set up payment gateways, optimize speed, and make sure everything looks good on mobile. Basically, so people can shop without getting frustrated along the way.",
-        teamManagementTitle: "Team Management",
-        teamManagementYear: "2015 — 2023",
-        teamManagementDesc: "Years leading teams taught me that the key is clear communication, knowing when and what is urgent, and keeping the team motivated even under pressure. Those are exactly the skills I want to apply as PMI in development teams: coordinate sprints, translate technical needs to client language, and make sure the team has what it needs to deliver good products without burning out along the way.",
+        accessProTitle: "Full Stack Developer with AI · Acceso Pro",
+        accessProYear: "15 Jul 2026 — Present · Part-time",
+        accessProDesc: "A recent role focused on n8n automation, language model integrations and Google Drive workflows.",
+        mentorTitle: "Technical Mentor & Training Project Developer · 4Geeks Academy",
+        mentorYear: "Feb 2025 — Present",
+        mentorDesc: "I develop technical projects and exercises for practising JavaScript, React, Python and Flask. I provide technical mentoring, code review, debugging and functional validation with a focus on structure, readability and maintainability.",
+        careerTitle: "Frontend Developer · Career Insights",
+        careerYear: "Jun 2025 — Dec 2025",
+        careerDesc: "Developed React components with TypeScript and Tailwind CSS, integrated REST APIs and built responsive interfaces with clear states.",
+        entusiasmoTitle: "WordPress & WooCommerce Developer · Entusiasmao",
+        entusiasmoYear: "Jun 2025 — Jul 2025",
+        entusiasmoDesc: "Website design and development, visual identity and setup of a customised online store.",
+        managementTitle: "Manager · Team Coordination · PARTYFIESTA",
+        managementYear: "Jun 2018 — Dec 2023",
+        managementDesc: "Led and coordinated a six-person team, planned work, monitored objectives and resolved operational issues.",
+        educationTitle: "EDUCATION",
+        fsAiCourse: "Full Stack Development with AI",
+        fsAiCourseDate: "Jan 2026 — Mar 2026",
+        aiEngineeringCourse: "AI Engineering (en curso)",
+        aiEngineeringCourseDate: "Jan 2026 — Present",
+        fullStackCourse: "Full Stack Development",
+        fullStackCourseDate: "Jan 2024 — Dec 2024",
 
         // About Me
         aboutMeTitle: "ABOUT ME",
@@ -175,14 +198,17 @@ export const translations = {
         // Contact
         contactTitle: "LET'S WORK TOGETHER",
         contactDesc: "I have an interesting proposal or I just want to meet you",
-        sendMessage: "Send message",
 
         // Projects
         projectsTitle: "PROJECTS",
-        projectsDesc: "Explore some of the projects I've developed; with \"View More\" you'll have access to the live site and the GitHub repo.",
+        projectsDesc: "Products and projects where I connect interfaces, data, backend systems and applied AI.",
         viewMore: "View More",
         viewLive: "View Live",
         viewRepo: "View Repo",
+        featuredProject: "Featured project",
+        complementaryProject: "Complementary project",
+        techStack: "Core stack",
+        close: "Close",
 
         // Navigation & Sections
         about: "ABOUT ME",
@@ -192,12 +218,12 @@ export const translations = {
         contact: "CONTACT",
 
         // Modals
-        cvTitle: "CV (summary)",
+        cvTitle: "Curriculum vitae",
         stack: "Stack",
-        stackValue: "React, Flask, SQLAlchemy, JWT, WordPress/WooCommerce",
-        experienceValue: "Technical Mentor at 4Geeks, QA Tester, e-commerce freelance projects",
+        stackValue: "Flutter, React, TypeScript, Python, Flask, Supabase and applied AI",
+        experienceValue: "Full Stack Developer with AI and Technical Mentor at 4Geeks Academy",
         focus: "Focus",
-        focusValue: "best practices, DX, accessibility and performance",
+        focusValue: "end-to-end product development, automation, maintainability and technical quality",
 
         // Contact Modal
         sendMessage: "Send me a message",
@@ -222,7 +248,7 @@ export const translations = {
         errorSendingMessage: "Error sending message. Please try again.",
 
         // Footer
-        footerDesc: "Full Stack Developer creating web experiences that really work.",
+        footerDesc: "Full Stack Developer with AI building end-to-end digital products.",
         quickAccess: "Quick Links",
         aboutFooter: "About Me",
         moreAbout: "More About Me",
@@ -234,14 +260,12 @@ export const translations = {
 
         // Auth Modal
         createAccount: "Create Account",
-        login: "Log In",
         name: "Name",
         email: "Email",
         password: "Password",
         type: "Type",
         individual: "Individual",
         company: "Company",
-        register: "Sign Up",
         enter: "Sign In",
         haveAccount: "I have an account",
         noAccount: "Create account",

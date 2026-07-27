@@ -9,18 +9,23 @@ const TechGrid = () => {
   const [visibleCards, setVisibleCards] = useState([]);
   const sectionRef = useRef(null);
 
-  useEffect(() => { actions.loadTechs(); }, []);
+  useEffect(() => {
+    actions.loadTechs();
+    // The action is intentionally run once to hydrate static portfolio data.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && visibleCards.length === 0) {
+        if (entry.isIntersecting) {
           // Animar las tarjetas de forma escalonada
           store.techs.forEach((_, index) => {
             setTimeout(() => {
               setVisibleCards(prev => [...prev, index]);
             }, index * 50);
           });
+          observer.disconnect();
         }
       },
       { threshold: 0.1 }
@@ -70,11 +75,18 @@ const TechGrid = () => {
                 }}
                 title={t.documentation_url ? `Ver documentación de ${t.name}` : t.name}
               >
-                <img
-                  className="tech-icon mb-3"
-                  src={t.icon_url}
-                  alt={t.name}
-                />
+                {t.icon_url ? (
+                  <img
+                    className="tech-icon mb-3"
+                    src={t.icon_url}
+                    alt=""
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="tech-icon mb-3 rounded-xl bg-green-dark text-white flex items-center justify-center font-black text-lg" aria-hidden="true">
+                    {t.name.slice(0, 2)}
+                  </div>
+                )}
                 <div className="font-semibold text-sm text-center text-ink">
                   {t.name}
                 </div>

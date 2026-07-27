@@ -1,23 +1,14 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import useTranslation from "../hooks/useTranslation.jsx";
-import confetti from 'canvas-confetti';
 import corporativePic from "../assets/img/corporative pic.jpeg";
+
+const CV_FILE_ID = "1Yh7NyD3bcU2Tcn1CEWWoDOTOCIVgPnnO";
+const CV_DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${CV_FILE_ID}`;
+const CV_VIEW_URL = `https://drive.google.com/file/d/${CV_FILE_ID}/view`;
 
 export default function Hero() {
   const { store, dispatch } = useGlobalReducer();
   const { t } = useTranslation();
-
-  const handleCVDownload = () => {
-    // Descarga directa del CV sin necesidad de registro
-    window.open("https://drive.google.com/file/d/13lU_eQd-ilb3VkELK47OoifacHVPhW69/view?usp=drive_link", "_blank");
-
-    // Animación de confeti
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-  };
 
   const handleExclusiveContent = () => {
     if (store.user) {
@@ -42,6 +33,9 @@ export default function Hero() {
             <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white/90">
               {t("heroSubtitle")}
             </p>
+            <p className="text-xs sm:text-sm md:text-base font-medium text-pink-light">
+              {t("heroStack")}
+            </p>
 
             <div className="space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
               <p>
@@ -56,15 +50,24 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <button
+              <a
+                href={CV_DOWNLOAD_URL}
                 className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-white text-green-hero font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:rotate-1 shadow-lg hover:shadow-xl text-sm sm:text-base group"
-                onClick={handleCVDownload}
+                download
               >
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 {t("downloadCV")}
-              </button>
+              </a>
+              <a
+                href={CV_VIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-white/60 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 text-sm sm:text-base"
+              >
+                {t("openCV")}
+              </a>
               {store.user && (
                 <button
                   className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-pink-light to-pink-light/80 text-ink font-semibold rounded-lg hover:from-pink-light/90 hover:to-pink-light transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base group"
@@ -83,7 +86,7 @@ export default function Hero() {
             <img
               className="photo mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md"
               src={corporativePic}
-              alt="Patricia Álvarez"
+              alt="Retrato profesional de Patricia Álvarez"
             />
           </div>
         </div>

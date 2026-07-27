@@ -12,29 +12,18 @@ export default function Footer() {
     const email = 'patriciaalvarezestevez@gmail.com';
 
     try {
-      const mailtoLink = `mailto:${email}`;
-      const testWindow = window.open(mailtoLink, '_self');
-
-      setTimeout(async () => {
-        try {
-          await navigator.clipboard.writeText(email);
-          setEmailCopied(true);
-          setTimeout(() => setEmailCopied(false), 3000);
-        } catch (err) {
-        }
-      }, 500);
-    } catch (err) {
-      try {
-        await navigator.clipboard.writeText(email);
-        setEmailCopied(true);
-        setTimeout(() => setEmailCopied(false), 3000);
-      } catch (clipboardErr) {
-      }
+      await navigator.clipboard.writeText(email);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 3000);
+    } catch {
+      setEmailCopied(false);
     }
+
+    window.location.href = `mailto:${email}`;
   };
 
   return (
-    <footer className="bg-gradient-to-br from-green-dark via-[#0f1a13] to-ink py-8 sm:py-12 md:py-16 mt-16 w-full overflow-hidden">
+    <footer id="contacto" className="bg-gradient-to-br from-green-dark via-[#0f1a13] to-ink py-8 sm:py-12 md:py-16 mt-16 w-full overflow-hidden">
       <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-8 sm:gap-10 md:gap-16 lg:gap-24 mb-8 sm:mb-10">
 
@@ -53,10 +42,6 @@ export default function Footer() {
               <a href="#top" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
                 {t("aboutFooter")}
-              </a>
-              <a href="#mas-sobre-mi" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
-                <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
-                {t("moreAbout")}
               </a>
               <a href="#experiencia" className="text-gray-300 hover:text-pink-light transition-colors duration-300 text-xs sm:text-sm md:text-base flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-pink-light group-hover:w-4 transition-all duration-300"></span>
