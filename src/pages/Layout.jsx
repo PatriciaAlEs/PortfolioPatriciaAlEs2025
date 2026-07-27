@@ -4,11 +4,13 @@ import Footer from "../components/Footer.jsx";
 import AuthModal from "../components/AuthModal.jsx";
 import WelcomeModal from "../components/WelcomeModal.jsx";
 import ContactModal from "../components/ContactModal.jsx";
+import MotionController from "../components/MotionController.jsx";
 
 export const Layout = () => {
   return (
     <>
       <Navbar />
+      <MotionController />
       <main>
         <Outlet />
       </main>
