@@ -262,7 +262,7 @@ export const translations = {
         aboutEditorialTitle: "Construyo software pensando como desarrolladora y como usuaria.",
         aboutEditorialBody: "Trabajo en la intersección entre desarrollo Full Stack, automatización e inteligencia artificial aplicada. Me gusta convertir problemas complejos en productos claros, útiles y sostenibles.",
         aboutEditorialQuote: "Aprendo construyendo, cuestiono lo que no funciona y no suelo conformarme con que algo esté simplemente terminado.",
-        contactQuestion: "¿Tienes una idea que merezca existir? La convertimos en producto.",
+        contactQuestion: "¿Tienes una idea? La convertimos en producto.",
         contactBody: "Estoy disponible para oportunidades donde el desarrollo Full Stack, la automatización y la IA aplicada puedan mejorar un producto real.",
         footerRole: "Full Stack Developer · IA · Alicante, España",
     },
@@ -529,7 +529,7 @@ export const translations = {
         aboutEditorialTitle: "I build software thinking both as a developer and as a user.",
         aboutEditorialBody: "I work at the intersection of Full Stack development, automation and applied artificial intelligence. I enjoy turning complex problems into clear, useful and sustainable products.",
         aboutEditorialQuote: "I learn by building, question what does not work and rarely settle for something being merely finished.",
-        contactQuestion: "Do you have an idea worth bringing to life? Let’s turn it into a product.",
+        contactQuestion: "Do you have an idea? Let’s turn it into a product.",
         contactBody: "I am available for opportunities where Full Stack development, automation and applied AI can improve a real product.",
         footerRole: "Full Stack Developer · AI · Alicante, Spain",
     }

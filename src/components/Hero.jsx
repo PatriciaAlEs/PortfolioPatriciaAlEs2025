@@ -12,20 +12,20 @@ export default function Hero() {
     <section id="top" className="editorial-hero">
       <div className="page-shell editorial-hero__grid">
         <div className="hero-copy">
-          <div className="hero-copy__eyebrow">
+          <div className="hero-copy__eyebrow hero-enter hero-enter--2">
             <hr aria-hidden="true" />
             <span>{t("heroEyebrow")}</span>
           </div>
-          <h1>Patricia <em>Álvarez</em></h1>
-          <p className="hero-copy__value">{t("heroValue")}</p>
+          <h1 className="hero-enter hero-enter--1">Patricia <em>Álvarez</em></h1>
+          <p className="hero-copy__value hero-enter hero-enter--3">{t("heroValue")}</p>
 
-          <div className="hero-capabilities" aria-label={t("keyCapabilities")}>
+          <div className="hero-capabilities hero-enter hero-enter--4" aria-label={t("keyCapabilities")}>
             {[t("keyCapabilities"), t("productDevelopment"), t("fullStackEngineering"), t("aiAutomation")].map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
           </div>
 
-          <div className="hero-actions">
+          <div className="hero-actions hero-enter hero-enter--4">
             <button className="button-primary" type="button" onClick={() => navigate("proyectos")}>
               {t("viewProjects")}<i className="fa-solid fa-arrow-right" aria-hidden="true" />
             </button>
@@ -39,15 +39,15 @@ export default function Hero() {
         </div>
 
         <figure className="hero-portrait">
-          <img src={portrait} alt={t("portraitAlt")} />
-          <aside className="hero-status" aria-label={t("statusLabel")}>
+          <img className="hero-enter hero-enter--5" src={portrait} alt={t("portraitAlt")} />
+          <aside className="hero-status hero-enter hero-enter--6" aria-label={t("statusLabel")}>
             <span>{t("statusLabel")}</span>
             <strong>{t("statusWorking")}</strong>
             <p>{t("statusLocation")} · {t("statusAvailable")}</p>
           </aside>
         </figure>
 
-        <p className="hero-human-note editorial-copy">{t("humanNote")}</p>
+        <p className="hero-human-note editorial-copy hero-enter hero-enter--4">{t("humanNote")}</p>
       </div>
     </section>
   );

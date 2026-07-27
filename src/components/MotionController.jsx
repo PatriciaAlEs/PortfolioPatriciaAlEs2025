@@ -7,16 +7,14 @@ const revealSelectors = [
   ".secondary-projects__header",
   ".project-card",
   ".capability-row",
+  ".timeline",
   ".timeline-item",
   ".education-strip",
   ".process-grid",
   ".about-section__main",
   ".exclusive-section > .page-shell > h2",
   ".exclusive-section > .page-shell > p",
-  ".exclusive-grid article",
-  ".contact-section .section-label",
-  ".contact-section__grid",
-  ".footer-line"
+  ".exclusive-grid article"
 ].join(",");
 
 const titleSelectors = [
@@ -39,11 +37,19 @@ export default function MotionController() {
     root.classList.add("motion-ready");
 
     const register = (scope = document) => {
-      scope.querySelectorAll(titleSelectors).forEach((element) => {
+      const titles = [
+        ...(scope.matches?.(titleSelectors) ? [scope] : []),
+        ...scope.querySelectorAll(titleSelectors)
+      ];
+      titles.forEach((element) => {
         element.classList.add("editorial-title-reveal");
       });
 
-      scope.querySelectorAll(revealSelectors).forEach((element, index) => {
+      const revealItems = [
+        ...(scope.matches?.(revealSelectors) ? [scope] : []),
+        ...scope.querySelectorAll(revealSelectors)
+      ];
+      revealItems.forEach((element, index) => {
         if (observed.has(element)) return;
         observed.add(element);
         element.classList.add("scroll-reveal");

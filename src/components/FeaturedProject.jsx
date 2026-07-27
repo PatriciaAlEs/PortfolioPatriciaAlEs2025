@@ -49,9 +49,12 @@ export default function FeaturedProject() {
   const { store } = useGlobalReducer();
   const { t } = useTranslation();
   const [activeLayer, setActiveLayer] = useState(0);
+  const [visibleLayer, setVisibleLayer] = useState(0);
+  const [layerTransition, setLayerTransition] = useState("");
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const previewTriggerRef = useRef(null);
   const closePreviewRef = useRef(null);
+  const layerTimerRef = useRef(null);
   const project = store.projects.find((item) => item.id === 10);
 
   useEffect(() => {
@@ -70,6 +73,26 @@ export default function FeaturedProject() {
       previewTrigger?.focus();
     };
   }, [isPreviewOpen]);
+
+  useEffect(() => () => window.clearTimeout(layerTimerRef.current), []);
+
+  const selectLayer = (index) => {
+    if (index === activeLayer) return;
+    setActiveLayer(index);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisibleLayer(index);
+      return;
+    }
+
+    setLayerTransition("is-exiting");
+    window.clearTimeout(layerTimerRef.current);
+    layerTimerRef.current = window.setTimeout(() => {
+      setVisibleLayer(index);
+      setLayerTransition("is-entering");
+      layerTimerRef.current = window.setTimeout(() => setLayerTransition(""), 170);
+    }, 110);
+  };
 
   if (!project) return null;
 
@@ -134,7 +157,7 @@ export default function FeaturedProject() {
           <p>ReadPp + LibrerIA</p>
           <h4>{t("layeredArchitecture")}</h4>
         </div>
-        <div className="architecture-rail" role="tablist" aria-label={t("layeredArchitecture")}>
+        <div className="architecture-rail" role="tablist" aria-label={t("layeredArchitecture")} style={{ "--active-layer": activeLayer }}>
           {architecture.map(([label], index) => (
             <button
               key={label}
@@ -142,13 +165,13 @@ export default function FeaturedProject() {
               role="tab"
               aria-selected={activeLayer === index}
               className={activeLayer === index ? "is-active" : ""}
-              onClick={() => setActiveLayer(index)}
+              onClick={() => selectLayer(index)}
             >
               <span>0{index + 1}</span>{label}
             </button>
           ))}
         </div>
-        <p className="architecture-detail">{t(architecture[activeLayer][1])}</p>
+        <p className={`architecture-detail ${layerTransition}`} role="tabpanel">{t(architecture[visibleLayer][1])}</p>
       </div>
 
       {isPreviewOpen && (

@@ -86,6 +86,28 @@ The hero was used as the focused region because it contains the most fidelity-se
    - Preserved the authenticated “Más sobre mí” area as three independent cards and kept its existing login gate.
    - No personal-story photographs are present in the current repository assets, so no unrelated or fabricated images were introduced.
    - Directed lint and the production build completed successfully.
+11. Motion and microinteraction pass:
+   - Added a sub-one-second, six-step hero entrance using opacity and a 16 px vertical offset without affecting layout.
+   - Added one-time viewport reveals with `IntersectionObserver`, including dynamically rendered project and authenticated-content cards.
+   - Gave editorial headings a restrained 120 ms print-like `clip-path` reveal while keeping functional copy on the standard fade treatment.
+   - Added rose navigation underlines, a more translucent compact header state, restrained card/image/chip hover feedback and accessible active states.
+   - Added a 280 ms two-phase transition for the ReadPp architecture panel plus a smoothly translating desktop layer indicator.
+   - Added a brief whole-content opacity transition for ES/EN changes instead of animating individual words.
+   - Added complete `prefers-reduced-motion` overrides that remove stagger, transforms, scale, clip reveals and animated panel changes.
+   - No animation library or continuous scroll listener was introduced.
+   - Directed lint and the production build completed successfully.
+   - Chrome checks at 1440 px and an emulated 390 × 844 px viewport confirmed meaningful rendering and no horizontal overflow.
+   - Reduced-motion emulation returned `opacity: 1`, `transform: none` and non-smooth scrolling for the hero.
+   - Architecture selection and the ES/EN switch remained functional after animation was added.
+   - No Vite overlay or runtime exception was detected; the preview still produces only the pre-existing missing `/favicon.ico` request.
+12. Favicon pass:
+   - Replaced the obsolete scroll emoji icons with an editorial “P” monogram using the established near-green, pale-pink and dusty-rose palette.
+   - Added SVG, multi-resolution ICO, 32 px PNG and 180 px Apple touch icon formats.
+   - Added explicit `<head>` references while preserving the exact `Patricia Álvarez ✦` browser title.
+   - Verified every favicon endpoint returns HTTP 200 with the expected image content type; the previous `/favicon.ico` 404 is resolved.
+13. Footer reveal correction:
+   - Removed Contact and footer blocks from the observer-driven reveal list after confirming they could remain at `opacity: 0` near the end of the document.
+   - The footer is now always rendered and visible; its editorial heading treatment remains intact.
 
 ## Findings
 
